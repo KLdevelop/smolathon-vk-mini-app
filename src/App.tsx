@@ -1,11 +1,24 @@
-import { ButtonPage } from './pages/ButtonPage';
+import { AppRoot, SplitLayout, SplitCol, View, Panel, PanelHeader, Header, Group, SimpleCell } from '@vkontakte/vkui';
+import '@vkontakte/vkui/dist/vkui.css';
 import './App.scss';
 
 function App() {
   return (
-    <>
-      <ButtonPage />
-    </>
+    <AppRoot>
+      <SplitLayout header={<PanelHeader separator={false} />}>
+        <SplitCol autoSpaced>
+          <View activePanel="main">
+            <Panel id="main">
+              <PanelHeader>VKUI</PanelHeader>
+              <Group header={<Header mode="secondary">Items</Header>}>
+                <SimpleCell>Hello</SimpleCell>
+                <SimpleCell>World</SimpleCell>
+              </Group>
+            </Panel>
+          </View>
+        </SplitCol>
+      </SplitLayout>
+    </AppRoot>
   );
 }
 
