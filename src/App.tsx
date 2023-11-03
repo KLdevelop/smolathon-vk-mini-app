@@ -7,7 +7,7 @@ function App() {
     <AppRoot>
       <View activePanel="main">
         <Panel id="main" centered>
-          <PanelHeader>VKUI</PanelHeader>
+          <PanelHeader>Test VK Mini App</PanelHeader>
           Test VK Mini App
         </Panel>
       </View>
