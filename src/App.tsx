@@ -1,4 +1,4 @@
-import { AppRoot, SplitLayout, SplitCol, View, Panel, PanelHeader, Header, Group, SimpleCell } from '@vkontakte/vkui';
+import { AppRoot, SplitLayout, SplitCol, View, Panel, PanelHeader } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import './App.scss';
 
@@ -10,10 +10,7 @@ function App() {
           <View activePanel="main">
             <Panel id="main">
               <PanelHeader>VKUI</PanelHeader>
-              <Group header={<Header mode="secondary">Items</Header>}>
-                <SimpleCell>Hello</SimpleCell>
-                <SimpleCell>World</SimpleCell>
-              </Group>
+              Test VK Mini App
             </Panel>
           </View>
         </SplitCol>
