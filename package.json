@@ -11,7 +11,17 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,md,json}'",
-    "tunnel": "vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=0.0.0.0 --port=10888 app_id=51785088 endpoints=[web]"
+    "tunnel": "vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=0.0.0.0 --port=10888 app_id=51785088 endpoints=[web]",
+    "create-component": "node scripts/create-component.js",
+    "delete-component": "node scripts/delete-component.js",
+    "create-page": "node scripts/create-page.js",
+    "delete-page": "node scripts/delete-page.js",
+    "create-hook": "node scripts/create-hook.js",
+    "delete-hook": "node scripts/delete-hook.js",
+    "create-slice": "node scripts/create-slice.js",
+    "delete-slice": "node scripts/delete-slice.js",
+    "create": "node scripts/create.js",
+    "delete": "node scripts/delete.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
