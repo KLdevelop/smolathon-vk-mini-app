@@ -11,7 +11,7 @@ mkdirSync(`${pages}/${pageName}`);
 const pageDir = path.resolve(pages, pageName);
 
 writeFileSync(
-  `${pageDir}/${pageName}.ts`,
+  `${pageDir}/${pageName}.tsx`,
   (() => {
     const importStyles = `import \'./${pageName}.scss\';`;
     const exportComponent = `export const ${pageName} = () => {\n\treturn ();\n};`;

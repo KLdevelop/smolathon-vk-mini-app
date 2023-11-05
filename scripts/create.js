@@ -14,7 +14,7 @@ mkdirSync(`${dirPath}/${componentName}`);
 const componentDir = path.resolve(dirPath, componentName);
 
 writeFileSync(
-  `${componentDir}/${componentName}.ts`,
+  `${componentDir}/${componentName}.tsx`,
   (() => {
     const importStyles = `import \'./${componentName}.scss\';`;
     const exportComponent = `export const ${componentName} = () => {\n\treturn ();\n};`;
