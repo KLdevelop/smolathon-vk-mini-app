@@ -11,8 +11,9 @@ export const TabHeader = ({ tabs, activeTab, setActiveTab }: Props) => {
   return (
     <Div>
       <ButtonGroup stretched mode="horizontal" className="tabHeader" gap="s">
-        {tabs.map((tab) => (
+        {tabs.map((tab, ind) => (
           <Button
+            key={ind}
             mode={activeTab === tab ? 'outline' : 'tertiary'}
             onClick={() => setActiveTab(tab)}
             size="m"
