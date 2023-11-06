@@ -15,6 +15,7 @@ export const TabHeader = ({ tabs, activeTab, setActiveTab }: Props) => {
           <Button
             key={tab}
             mode={activeTab === tab ? 'outline' : 'tertiary'}
+            appearance={activeTab === tab ? 'accent' : 'neutral'}
             onClick={() => setActiveTab(tab)}
             size="m"
             stretched
