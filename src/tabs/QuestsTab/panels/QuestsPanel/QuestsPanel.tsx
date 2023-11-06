@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Button, Div, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/vkui';
+import { Button, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/vkui';
 import { Icon16DropdownOutline } from '@vkontakte/icons';
-import { TabHeader, CardContent } from '@/components';
+import { TabHeader, CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { quests } from '@/data/quests';
 import './QuestsPanel.scss';
@@ -31,27 +31,22 @@ export const QuestsPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
         </Button>
       </PanelHeader>
       <TabHeader activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
-      <Div>
-        <Button onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}>
-          Открыть описание квеста
-        </Button>
-        <Group>
-          <CardGrid size="l">
-            {quests.map((i, ind) => (
-              <CardContent
-                onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}
-                key={ind}
-                img={i.img}
-                estimationTime={i.estimationTime}
-                title={i.title}
-                description={i.description}
-                type={i.type}
-                reward={i.reward}
-              />
-            ))}
-          </CardGrid>
-        </Group>
-      </Div>
+      <Group>
+        <CardGrid size="l" className="questsPanelCardGrid">
+          {quests.map((quest) => (
+            <CardContent
+              onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}
+              key={quest.id}
+              img={quest.img}
+              estimationTime={quest.estimationTime}
+              title={quest.title}
+              description={quest.description}
+              type={quest.type}
+              reward={quest.reward}
+            />
+          ))}
+        </CardGrid>
+      </Group>
     </Panel>
   );
 };
