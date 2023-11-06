@@ -5,9 +5,9 @@ import { Navigation } from './Navigation';
 
 function App() {
   return (
-    <AppRoot>
+    < AppRoot >
       <Navigation />
-    </AppRoot>
+    </AppRoot >
   );
 }
 

@@ -1,5 +1,6 @@
 import { ContentCard } from '@vkontakte/vkui';
 import './CardContent.scss';
+
 interface CardContentProps {
 	onClick: () => void,
 	img: string,
