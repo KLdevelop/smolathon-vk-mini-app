@@ -7,6 +7,7 @@ import { AboutContent, QuestsPanelIDs, RouteContent } from '..';
 import { AboutQuestTab, AboutQuestTabs } from './aboutQuestTabIDs';
 import { useNavigate } from '@/hooks';
 import { Tabs } from '@/tabs/tabs';
+import { quests } from '@/data/quests';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -30,7 +31,7 @@ export const AboutQuestPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
       <PanelTabSelector
         activeTab={activeTab}
         tabComponents={{
-          [AboutQuestTabs.about]: () => <AboutContent title="Смоленск - крепость России" />,
+          [AboutQuestTabs.about]: () => <AboutContent questData={quests[0]} />,
           [AboutQuestTabs.route]: () => <RouteContent />,
         }}
       />
