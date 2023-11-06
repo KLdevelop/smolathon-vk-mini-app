@@ -1,14 +1,15 @@
-import { Panel, View } from '@vkontakte/vkui';
+import { View } from '@vkontakte/vkui';
 import { TabProps } from '../TabProps';
 import './QuestTab.scss';
-import { useState } from 'react';
+import { useQuestTabPanel } from '@/hooks';
+import { EmptyPanel, QuestPanelIDs } from './panels';
 
 export const QuestTab = ({ id }: TabProps) => {
-  const [activePanel, setActivePanel] = useState('main');
+  const [activePanel, setActivePanel] = useQuestTabPanel();
 
   return (
     <View id={id} activePanel={activePanel}>
-      <Panel id="main">Quest tab</Panel>
+      <EmptyPanel id={QuestPanelIDs.Empty} setActivePanel={setActivePanel} />
     </View>
   );
 };
