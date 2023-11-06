@@ -9,10 +9,11 @@ interface Props {
 
 export const TabHeader = ({ tabs, activeTab, setActiveTab }: Props) => {
   return (
-    <Div>
+    <Div style={{ background: 'var(--vkui--color_background_content)' }}>
       <ButtonGroup stretched mode="horizontal" className="tabHeader" gap="s">
         {tabs.map((tab) => (
           <Button
+            key={tab}
             mode={activeTab === tab ? 'outline' : 'tertiary'}
             onClick={() => setActiveTab(tab)}
             size="m"
