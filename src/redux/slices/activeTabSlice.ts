@@ -1,4 +1,4 @@
-import { Tab } from '@/tabs';
+import { Tab, Tabs } from '@/tabs';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface InitialState {
@@ -6,7 +6,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  activeTab: 'quests',
+  activeTab: Tabs.QuestsTab,
 };
 
 const activeTabSlice = createSlice({

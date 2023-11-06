@@ -1,13 +1,13 @@
 import { Button, ButtonGroup, Div } from '@vkontakte/vkui';
 import './TabHeader.scss';
 
-interface Props {
-  activeTab: string;
-  tabs: string[];
-  setActiveTab: (title: string) => void;
+interface Props<TabID extends string> {
+  activeTab: TabID;
+  tabs: TabID[];
+  setActiveTab: (title: TabID) => void;
 }
 
-export const TabHeader = ({ tabs, activeTab, setActiveTab }: Props) => {
+export const TabHeader = <TabID extends string>({ tabs, activeTab, setActiveTab }: Props<TabID>) => {
   return (
     <Div style={{ background: 'var(--vkui--color_background_content)' }}>
       <ButtonGroup stretched mode="horizontal" className="tabHeader" gap="s">

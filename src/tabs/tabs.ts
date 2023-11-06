@@ -1,6 +1,7 @@
 export const Tabs = {
-  QuestsTab: 'quests',
+  QuestsTab: 'main',
   MarketTab: 'market',
+  QuestTab: 'quest',
   WikiTab: 'wiki',
   AchievementsTab: 'achievements',
 } as const;
