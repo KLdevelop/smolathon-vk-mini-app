@@ -1,6 +1,6 @@
 import { Group, Div, FixedLayout, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 import './AboutQuestPanel.scss';
-import { TabHeader } from '@/components';
+import { DescriptionItem, TabHeader } from '@/components';
 import { useState } from 'react';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { QuestsPanelIDs } from '..';
@@ -22,7 +22,7 @@ export const AboutQuestPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
       </FixedLayout>
       <Group>
         <Div style={contentStyles}>
-          description
+          <DescriptionItem />
         </Div>
       </Group>
     </Panel>
