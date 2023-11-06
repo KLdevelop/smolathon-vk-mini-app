@@ -1,6 +1,6 @@
 import smolensk from './Smolensk.png';
 
-export const quests: Quests = [
+export const quests = [
   {
     id: 1,
     title: 'Смоленск - щит России',
