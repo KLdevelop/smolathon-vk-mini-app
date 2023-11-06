@@ -13,5 +13,6 @@
   "insertPragma": false,
   "requirePragma": false,
   "proseWrap": "always",
+  "max-len": ["error", { "code": 120 }],
   "quoteProps": "as-needed"
 }
