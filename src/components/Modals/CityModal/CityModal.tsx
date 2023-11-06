@@ -28,8 +28,8 @@ export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) 
     <ModalPage
       id={id}
       onClose={closeModal}
-      settlingHeight={80}
-      hideCloseButton={true}
+      settlingHeight={100}
+      hideCloseButton
       header={
         <ModalPageHeader
           before={
@@ -58,7 +58,6 @@ export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) 
           position: 'sticky',
           bottom: 0,
           paddingBottom: 16,
-          paddingTop: 1,
           background: 'var(--vkui--color_background_content)',
         }}
       >
