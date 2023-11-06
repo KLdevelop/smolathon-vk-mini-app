@@ -1,21 +1,23 @@
-import { Div, Text, Title } from '@vkontakte/vkui';
+import { useState } from 'react';
+import { Div, Group, Text, Title } from '@vkontakte/vkui';
 import './DescriptionItem.scss';
 
-export const DescriptionItem = () => {
+interface DescriptionItemProps {
+	description: string
+}
+
+export const DescriptionItem = ({ description }: DescriptionItemProps) => {
+	const [showMore, setShowMore] = useState(false)
+
 	return (
-		<Div>
-			<Title>ОПИСАНИЕ</Title>
-			<Text aria-valuemax={2}>
-				Этот маршрут предлагает пройтись по основным башням и укреплениям крепостной стены, погрузившись в историю
-				Смоленска. Вы сможете увидеть Константиновскую башню, Адамовские казармы, Спасские ворота и другие интересные
-				объекты. Не забудьте посетить Крепостной музей и поучаствовать в интерактивных экскурсиях.
-				Этот маршрут предлагает пройтись по основным башням и укреплениям крепостной стены, погрузившись в историю
-				Смоленска. Вы сможете увидеть Константиновскую башню, Адамовские казармы, Спасские ворота и другие интересные
-				объекты. Не забудьте посетить Крепостной музей и поучаствовать в интерактивных экскурсиях.
-				Этот маршрут предлагает пройтись по основным башням и укреплениям крепостной стены, погрузившись в историю
-				Смоленска. Вы сможете увидеть Константиновскую башню, Адамовские казармы, Спасские ворота и другие интересные
-				объекты. Не забудьте посетить Крепостной музей и поучаствовать в интерактивных экскурсиях.
-			</Text>
-		</Div >
+		<Group>
+			<Div>
+				<Title style={{ color: "var(--vkui--color_text_secondary)" }} className='descriptionTitle' level='3'>ОПИСАНИЕ</Title>
+				<Text className={` descriptionText ${showMore ? '' : 'descriptionTextHidden'}`}>
+					{description}
+				</Text>
+				<Text style={{ color: "var(--vkui--color_text_accent)" }} className="descriptionText" onClick={() => setShowMore(!showMore)}>{showMore ? "Свернуть" : "Показать всё"}</Text>
+			</Div>
+		</Group >
 	);
 };
