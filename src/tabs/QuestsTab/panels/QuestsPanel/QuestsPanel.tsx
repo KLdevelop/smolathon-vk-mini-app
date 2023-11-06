@@ -1,10 +1,11 @@
-import { Button, Div, Panel, PanelHeader, Title } from '@vkontakte/vkui';
-import './QuestsPanel.scss';
-import { ModalIDs, TabHeader } from '@/components';
 import { useState } from 'react';
-import { QuestsPanelProps } from '../questsPanelProps';
-import { QuestsPanelIDs } from '..';
+import { Button, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/vkui';
 import { Icon16DropdownOutline } from '@vkontakte/icons';
+import { TabHeader, CardContent, ModalIDs } from '@/components';
+import { QuestsPanelProps } from '../questsPanelProps';
+import { quests } from '@/data/quests';
+import './QuestsPanel.scss';
+import { QuestsPanelIDs } from '../questsPanelIDs';
 import { useAppSelector, useOpenModal } from '@/hooks';
 
 export const QuestsPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
@@ -30,11 +31,22 @@ export const QuestsPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
         </Button>
       </PanelHeader>
       <TabHeader activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
-      <Div>
-        <Button onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}>
-          Открыть описание квеста
-        </Button>
-      </Div>
+      <Group>
+        <CardGrid size="l" className="questsPanelCardGrid">
+          {quests.map((quest) => (
+            <CardContent
+              onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}
+              key={quest.id}
+              img={quest.img}
+              estimationTime={quest.estimationTime}
+              title={quest.title}
+              description={quest.description}
+              type={quest.type}
+              reward={quest.reward}
+            />
+          ))}
+        </CardGrid>
+      </Group>
     </Panel>
   );
 };

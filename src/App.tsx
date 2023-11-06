@@ -3,12 +3,15 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './App.scss';
 import { Navigation } from './Navigation';
 import { AppModalRoot } from './components';
+import { useAppSelector } from './hooks';
 
 function App() {
+  const { activeModal } = useAppSelector((state) => state.modal);
+
   return (
     <AppRoot>
       <AppModalRoot />
-      <Navigation />
+      {activeModal === null && <Navigation />}
     </AppRoot>
   );
 }
