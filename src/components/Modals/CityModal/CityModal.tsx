@@ -1,9 +1,9 @@
-import { Button, Cell, Div, Group, IconButton, ModalPage, ModalPageHeader, Search } from '@vkontakte/vkui';
+import { Button, Cell, Group, IconButton, ModalPage, ModalPageHeader, Search } from '@vkontakte/vkui';
 import { Icon24CancelOutline } from '@vkontakte/icons';
 import { cities } from './constants';
 import { ModalProps } from '../ModalProps';
 import { useState } from 'react';
-import { CircleCheckbox } from '@/components';
+import { CircleCheckbox, StickyFooter } from '@/components';
 
 interface Props extends ModalProps {
   activeCity: string | null;
@@ -53,18 +53,11 @@ export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) 
           </Cell>
         ))}
       </Group>
-      <Div
-        style={{
-          position: 'sticky',
-          bottom: 0,
-          paddingBottom: 16,
-          background: 'var(--vkui--color_background_content)',
-        }}
-      >
-        <Button size="l" mode="primary" stretched onClick={onAcceptClick}>
+      <StickyFooter>
+        <Button size="l" stretched onClick={onAcceptClick}>
           Применить
         </Button>
-      </Div>
+      </StickyFooter>
     </ModalPage>
   );
 };

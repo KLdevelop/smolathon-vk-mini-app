@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { activeModalReducer, activeTabReducer, selectedCityReducer } from './slices';
+import { activeModalReducer, activeTabReducer, questTabReducer, questsTabReducer, selectedCityReducer } from './slices';
 
 const store = configureStore({
   reducer: {
     tabs: activeTabReducer,
     modal: activeModalReducer,
     city: selectedCityReducer,
+    questsTab: questsTabReducer,
+    questTab: questTabReducer,
   },
 });
 
