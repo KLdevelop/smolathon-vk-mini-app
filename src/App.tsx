@@ -7,10 +7,9 @@ import { AppModalRoot } from './components';
 function App() {
   return (
     <AppRoot>
-      <SplitLayout>
+      <SplitLayout modal={<AppModalRoot />}>
         <Navigation />
       </SplitLayout>
-      <AppModalRoot />
     </AppRoot>
   );
 }
