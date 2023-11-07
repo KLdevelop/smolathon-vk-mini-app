@@ -3,29 +3,28 @@ import './AboutQuestPanel.scss';
 import { PanelTabSelector, StickyFooter, TabHeader } from '@/components';
 import { useState } from 'react';
 import { QuestsPanelProps } from '../questsPanelProps';
-import { AboutContent, QuestsPanelIDs, RouteContent } from '..';
+import { AboutContent, RouteContent } from '..';
 import { AboutQuestTab, AboutQuestTabs } from './aboutQuestTabIDs';
-import { useNavigate } from '@/hooks';
-import { Tabs } from '@/tabs/tabs';
 import { quests } from '@/data/quests';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 // const contentStyles = {
 //   paddingTop: 110,
 //   paddingBottom: 60,
 // };
 
-export const AboutQuestPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
+export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
   const tabs: AboutQuestTab[] = Object.values(AboutQuestTabs);
   const [activeTab, setActiveTab] = useState<AboutQuestTab>(AboutQuestTabs.about);
-  const navigate = useNavigate();
+  const navigator = useRouteNavigator();
+  // const setActivePanel = (panel: QuestsPanelID) => {
+  //   navigator.push(routes[root][Tabs.QuestsTab][panel]);
+  // };
 
   return (
-    <Panel id={id}>
+    <Panel nav={id}>
       {/* <FixedLayout vertical="top" filled> */}
-      <PanelHeader
-        before={<PanelHeaderBack onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.Quests)} />}
-        separator={false}
-      />
+      <PanelHeader before={<PanelHeaderBack onClick={() => navigator.back()} />} separator={false} />
       <TabHeader activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
       {/* </FixedLayout> */}
       <PanelTabSelector
@@ -36,7 +35,7 @@ export const AboutQuestPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
         }}
       />
       <StickyFooter>
-        <Button stretched size="l" onClick={() => navigate(Tabs.QuestTab)}>
+        <Button stretched size="l" onClick={() => navigator.push('/quest')}>
           Начать квест
         </Button>
       </StickyFooter>

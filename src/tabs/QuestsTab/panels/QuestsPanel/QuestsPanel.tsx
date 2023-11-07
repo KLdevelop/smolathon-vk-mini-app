@@ -5,17 +5,22 @@ import { TabHeader, CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { quests } from '@/data/quests';
 import './QuestsPanel.scss';
-import { QuestsPanelIDs } from '../questsPanelIDs';
+import { QuestsPanelID, QuestsPanelIDs } from '@/navigation';
 import { useAppSelector, useOpenModal } from '@/hooks';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-export const QuestsPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
+export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const tabs = ['Новые', 'Активные'];
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const { selectedCity } = useAppSelector((state) => state.city);
   const openCityModal = useOpenModal(ModalIDs.CityModal);
+  const navigator = useRouteNavigator();
+  const setActivePanel = (panel: QuestsPanelID) => {
+    navigator.push(`/${panel}`);
+  };
 
   return (
-    <Panel id={id}>
+    <Panel nav={id}>
       <PanelHeader separator={false}>
         <Button
           appearance="neutral"
@@ -35,7 +40,7 @@ export const QuestsPanel = ({ id, setActivePanel }: QuestsPanelProps) => {
         <CardGrid size="l" className="questsPanelCardGrid">
           {quests.map((quest) => (
             <CardContent
-              onClick={() => setActivePanel && setActivePanel(QuestsPanelIDs.AboutQuest)}
+              onClick={() => setActivePanel(QuestsPanelIDs.AboutQuest)}
               key={quest.id}
               img={quest.img}
               estimationTime={quest.estimationTime}

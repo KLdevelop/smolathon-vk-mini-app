@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@/tabs';
+import { Tab, Tabs } from '@/navigation';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface InitialState {

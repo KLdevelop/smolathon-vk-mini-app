@@ -1,6 +1,6 @@
 import { setActiveTab } from '@/redux/slices';
 import { useAppDispatch } from './reduxHooks';
-import { Tab } from '@/tabs';
+import { Tab } from '@/navigation';
 
 export const useNavigate = () => {
   const dispatch = useAppDispatch();
