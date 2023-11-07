@@ -31,11 +31,11 @@ export const DebugModal = ({ id, closeModal }: Props) => {
       <Group>
         <Div>
           <Headline style={{ color: 'var(--vkui--color_text_secondary)' }}>Новые координаты</Headline>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Input />
-            <Input />
+          <div style={{ display: 'flex', marginTop: '3%' }}>
+            <Input placeholder="0" style={{ marginRight: '4%' }} />
+            <Input placeholder="0" />
           </div>
-          <Card mode="outline">
+          <Card mode="outline" style={{ marginTop: '3%' }}>
             <Div>Это действие остановит отслеживание геолокации в реальном времени до перезапуска приложения</Div>
           </Card>
         </Div>
