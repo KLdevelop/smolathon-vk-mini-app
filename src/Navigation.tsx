@@ -4,10 +4,11 @@ import { AchievementsTab, MarketTab, QuestTab, QuestsTab, Tabs, WikiTab } from '
 import { AppFooter } from './components';
 
 export const Navigation = () => {
+  const { activeModal } = useAppSelector((state) => state.modal);
   const { activeTab } = useAppSelector((state) => state.tabs);
 
   return (
-    <Epic activeStory={activeTab} tabbar={<AppFooter activeTab={activeTab} />}>
+    <Epic activeStory={activeTab} tabbar={!activeModal && <AppFooter activeTab={activeTab} />}>
       <QuestsTab id={Tabs.QuestsTab} />
       <MarketTab id={Tabs.MarketTab} />
       <QuestTab id={Tabs.QuestTab} />
