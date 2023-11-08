@@ -3,7 +3,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './App.scss';
 import { Navigation } from './Navigation';
 import { AppModalRoot } from './components';
-import { root } from './navigation';
+import { root } from './navigations';
 
 function App() {
   return (

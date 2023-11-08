@@ -1,2 +1,2 @@
 export * from './EmptyPanel';
-export * from '../../../navigation/questPanelIDs';
+export * from '../../../navigations/questPanelIDs';

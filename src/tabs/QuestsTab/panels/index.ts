@@ -1,3 +1,3 @@
 export * from './QuestsPanel';
 export * from './AboutQuestPanel';
-export * from '../../../navigation/questsPanelIDs';
+export * from '../../../navigations/questsPanelIDs';

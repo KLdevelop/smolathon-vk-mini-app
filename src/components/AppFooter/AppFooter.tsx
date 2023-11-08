@@ -7,7 +7,7 @@ import {
   Icon28HomeOutline,
   Icon28MarketOutline,
 } from '@vkontakte/icons';
-import { Tab, Tabs } from '@/navigation';
+import { Tab, Tabs } from '@/navigations';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 interface Props {
