@@ -7,34 +7,34 @@ import {
   Icon28HomeOutline,
   Icon28MarketOutline,
 } from '@vkontakte/icons';
-import { useNavigate } from '@/hooks';
-import { Tab, Tabs } from '@/tabs';
+import { Tab, Tabs } from '@/navigation';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 interface Props {
   activeTab: Tab;
 }
 
 export const AppFooter = ({ activeTab }: Props) => {
-  const navigate = useNavigate();
+  const navigator = useRouteNavigator();
 
   return (
     <Tabbar>
-      <TabbarItem text="Главная" selected={activeTab === Tabs.QuestsTab} onClick={() => navigate(Tabs.QuestsTab)}>
+      <TabbarItem text="Главная" selected={activeTab === Tabs.QuestsTab} onClick={() => navigator.push('/')}>
         <Icon28HomeOutline />
       </TabbarItem>
-      <TabbarItem text="Маркет" selected={activeTab === Tabs.MarketTab} onClick={() => navigate(Tabs.MarketTab)}>
+      <TabbarItem text="Маркет" selected={activeTab === Tabs.MarketTab} onClick={() => navigator.push('/market')}>
         <Icon28MarketOutline />
       </TabbarItem>
-      <TabbarItem text="Квест" selected={activeTab === Tabs.QuestTab} onClick={() => navigate(Tabs.QuestTab)}>
+      <TabbarItem text="Квест" selected={activeTab === Tabs.QuestTab} onClick={() => navigator.push('/quest')}>
         <Icon28GameOutline />
       </TabbarItem>
-      <TabbarItem text="Вики" selected={activeTab === Tabs.WikiTab} onClick={() => navigate(Tabs.WikiTab)}>
+      <TabbarItem text="Вики" selected={activeTab === Tabs.WikiTab} onClick={() => navigator.push('/Wiki')}>
         <Icon28BookSpreadOutline />
       </TabbarItem>
       <TabbarItem
         text="Достижения"
         selected={activeTab === Tabs.AchievementsTab}
-        onClick={() => navigate(Tabs.AchievementsTab)}
+        onClick={() => navigator.push('/achievements')}
       >
         <Icon28CupOutline />
       </TabbarItem>

@@ -1,4 +1,4 @@
-import { QuestsPanelID } from './questsPanelIDs';
+import { QuestsPanelID } from '../../../navigation/questsPanelIDs';
 
 export interface QuestsPanelProps {
   id: QuestsPanelID;

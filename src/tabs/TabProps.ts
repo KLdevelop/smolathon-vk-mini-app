@@ -1,4 +1,4 @@
-import { Tab } from './tabs';
+import { Tab } from '@/navigation';
 
 export interface TabProps {
   id: Tab;

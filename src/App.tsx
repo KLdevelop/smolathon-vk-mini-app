@@ -3,12 +3,13 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './App.scss';
 import { Navigation } from './Navigation';
 import { AppModalRoot } from './components';
+import { root } from './navigation';
 
 function App() {
   return (
     <AppRoot>
       <SplitLayout modal={<AppModalRoot />}>
-        <Navigation />
+        <Navigation id={root} />
       </SplitLayout>
     </AppRoot>
   );
