@@ -7,3 +7,4 @@ export const Tabs = {
 } as const;
 
 export type Tab = (typeof Tabs)[keyof typeof Tabs];
+    

@@ -5,7 +5,7 @@ import { TabHeader, CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { quests } from '@/data/quests';
 import './QuestsPanel.scss';
-import { QuestsPanelID, QuestsPanelIDs } from '@/navigation';
+import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 

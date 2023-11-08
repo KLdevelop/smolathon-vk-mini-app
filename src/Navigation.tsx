@@ -2,7 +2,7 @@ import { Epic } from '@vkontakte/vkui';
 import { AchievementsTab, MarketTab, QuestTab, QuestsTab, WikiTab } from './tabs';
 import { AppFooter } from './components';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
-import { Tab, Tabs } from './navigation';
+import { Tab, Tabs } from './navigations';
 
 interface NavigationProps {
   id?: string;

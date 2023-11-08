@@ -1,4 +1,4 @@
-import { QuestPanelID } from '../../../navigation/questPanelIDs';
+import { QuestPanelID } from '../../../navigations/questPanelIDs';
 
 export interface QuestPanelProps {
   id: QuestPanelID;
