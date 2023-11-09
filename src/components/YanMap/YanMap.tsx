@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const MapContainer = styled.div`
   display: grid;
   height: 300px;
-  width: 100vw;
+  width: 100%;
 `;
 
 function calculateMapCenter(coordinates: number[][]) {
