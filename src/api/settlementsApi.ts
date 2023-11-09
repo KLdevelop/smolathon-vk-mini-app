@@ -5,11 +5,8 @@ export const settlementsApi = createApi({
   reducerPath: 'settlementsApi',
   baseQuery: fetchBaseQuery({ baseUrl: apiUrl + '/settlements' }),
   endpoints: (builder) => ({
-    searchSettlements: builder.query<Settlement[], string>({
-      query: (query) => ({ url: 'search', body: { query } }),
-      transformResponse(baseQueryReturnValue: ApiResponse<Settlement[]>, meta, arg) {
-        if (baseQueryReturnValue.ok) return baseQueryReturnValue.result;
-      },
+    searchSettlements: builder.query<ApiResponse<Settlement[]>, string>({
+      query: (query) => ({ url: `search?query=${query}`, method: 'get' }),
     }),
   }),
 });
