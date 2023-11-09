@@ -4,6 +4,7 @@ import { cities } from './constants';
 import { ModalProps } from '../ModalProps';
 import { useState } from 'react';
 import { CircleCheckbox, StickyFooter } from '@/components';
+import { useSearchSettlementsQuery } from '@/api/settlementsApi';
 
 interface Props extends ModalProps {
   activeCity: string | null;
@@ -14,9 +15,10 @@ const headerTitle = 'Выбор города';
 
 export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const filteredCities = cities.filter(({ city }) =>
-    city.trim().toLowerCase().includes(searchValue.trim().toLowerCase()),
-  );
+  // const filteredCities = cities.filter(({ city }) =>
+  //   city.trim().toLowerCase().includes(searchValue.trim().toLowerCase()),
+  // );
+  const { data: filteredCities } = useSearchSettlementsQuery(searchValue);
   const [selectedCity, setSelectedCity] = useState<string | null>(activeCity);
 
   const onAcceptClick = () => {

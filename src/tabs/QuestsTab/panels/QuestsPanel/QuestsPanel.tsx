@@ -8,6 +8,7 @@ import './QuestsPanel.scss';
 import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useGetQuestsListQuery } from '@/api/questsApi';
 
 export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const tabs = ['Новые', 'Активные'];
@@ -18,6 +19,8 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const setActivePanel = (panel: QuestsPanelID) => {
     navigator.push(`/${panel}`);
   };
+  const s = useGetQuestsListQuery();
+  console.log(s);
 
   return (
     <Panel nav={id}>

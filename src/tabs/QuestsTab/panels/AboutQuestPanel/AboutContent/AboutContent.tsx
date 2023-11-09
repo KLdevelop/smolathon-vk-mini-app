@@ -9,7 +9,7 @@ interface AboutContentProps {
 export const AboutContent = ({ questData }: AboutContentProps) => {
   return (
     <Div style={{ display: 'grid', gap: '20px' }}>
-      <Title>{questData.title}</Title>
+      <Title>{questData.name}</Title>
       <Div style={{ padding: 0 }}>
         <img src={questData.img} alt="" style={{ width: '100%', height: '100%' }} />
       </Div>
