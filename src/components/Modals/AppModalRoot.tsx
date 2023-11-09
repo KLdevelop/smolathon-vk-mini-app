@@ -3,6 +3,7 @@ import { ModalIDs } from './modalIDs';
 import { CityModal } from './CityModal';
 import { useAppSelector, useCloseActiveModal, useSelectCity } from '@/hooks';
 import { DebugModal } from './DebugModal';
+import { AttractionModal } from './AttractionModal/AttractionModal';
 
 export const AppModalRoot = () => {
   const { activeModal } = useAppSelector((state) => state.modal);
@@ -18,6 +19,7 @@ export const AppModalRoot = () => {
         setActiveCity={setSelectedCity}
       />
       <DebugModal id={ModalIDs.DebugModal} closeModal={closeActiveModal} />
+      <AttractionModal id={ModalIDs.AttractionModal} closeModal={closeActiveModal}/>
     </ModalRoot>
   );
 };

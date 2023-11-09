@@ -1,19 +1,21 @@
-import { Card, Counter, Div, Image, Text, Title } from '@vkontakte/vkui';
-import Smolensk from '../../../data/Smolensk.png';
+import { Card, Counter, Div, Image, Text, Subhead } from '@vkontakte/vkui';
+// import {  } from 'node_modules/@vkontakte/vkui/dist/index';
+import Smolensk from '@/data/Smolensk.png';
 interface CardAttractionProps {
+  num: number;
   title: string;
   type: string;
   address: string;
 }
 
-export const CardAttraction = ({ title, type, address }: CardAttractionProps) => {
+export const CardAttraction = ({ num, title, type, address }: CardAttractionProps) => {
   return (
     <Card style={{ maxWidth: '360px' }}>
       <Div style={{ display: 'flex', alignItems: 'start', justifyContent: 'space-around' }}>
-        <Counter mode="primary">1</Counter>
+        <Counter mode="primary">{num}</Counter>
         <div>
-          <div style={{ marginBottom: '10%' }}>
-            <Title level="3">{title}</Title>
+          <div style={{ marginBottom: '6%' }}>
+            <Subhead weight="2">{title}</Subhead>
             <Text weight="2" style={{ color: 'var(--vkui--color_text_secondary)', fontSize: '13px' }}>
               {type}
             </Text>
