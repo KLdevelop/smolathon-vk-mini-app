@@ -1,26 +1,32 @@
 import { Button, ButtonGroup, Div } from '@vkontakte/vkui';
 import './TabHeader.scss';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
-interface Props<TabID extends string> {
-  activeTab: TabID;
-  tabs: TabID[];
-  setActiveTab: (title: TabID) => void;
+interface Props {
+  activeTabId: string;
+  tabs: {
+    tabId: string;
+    title: string;
+    route: string;
+  }[];
 }
 
-export const TabHeader = <TabID extends string>({ tabs, activeTab, setActiveTab }: Props<TabID>) => {
+export const TabHeader = ({ tabs, activeTabId }: Props) => {
+  const navigator = useRouteNavigator();
+
   return (
     <Div style={{ background: 'var(--vkui--color_background_content)' }}>
       <ButtonGroup stretched mode="horizontal" className="tabHeader" gap="s">
-        {tabs.map((tab) => (
+        {tabs.map(({ tabId, title, route }) => (
           <Button
-            key={tab}
-            mode={activeTab === tab ? 'outline' : 'tertiary'}
-            appearance={activeTab === tab ? 'accent' : 'neutral'}
-            onClick={() => setActiveTab(tab)}
+            key={route}
+            mode={activeTabId === tabId ? 'outline' : 'tertiary'}
+            appearance={activeTabId === tabId ? 'accent' : 'neutral'}
+            onClick={() => navigator.push(route)}
             size="m"
             stretched
           >
-            {tab}
+            {title}
           </Button>
         ))}
       </ButtonGroup>

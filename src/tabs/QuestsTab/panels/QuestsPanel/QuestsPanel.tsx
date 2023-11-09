@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/vkui';
 import { Icon16DropdownOutline } from '@vkontakte/icons';
 import { TabHeader, CardContent, ModalIDs } from '@/components';
@@ -7,11 +6,22 @@ import { quests } from '@/data/quests';
 import './QuestsPanel.scss';
 import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 export const QuestsPanel = ({ id }: QuestsPanelProps) => {
-  const tabs = ['Новые', 'Активные'];
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const { tab: activeTabId } = useActiveVkuiLocation();
+  const tabs = [
+    {
+      tabId: 'new',
+      title: 'Новые',
+      route: '/',
+    },
+    {
+      tabId: 'active',
+      title: 'Активные',
+      route: '/active_quests',
+    },
+  ];
   const { selectedCity } = useAppSelector((state) => state.city);
   const openCityModal = useOpenModal(ModalIDs.CityModal);
   const navigator = useRouteNavigator();
@@ -35,7 +45,7 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
           </Title>
         </Button>
       </PanelHeader>
-      <TabHeader activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
+      <TabHeader activeTabId={activeTabId ?? 'new'} tabs={tabs} />
       <Group>
         <CardGrid size="l" className="questsPanelCardGrid">
           {quests.map((quest) => (
