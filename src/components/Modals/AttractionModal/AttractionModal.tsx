@@ -1,7 +1,8 @@
 import { CardAddress, CardSchedule } from '@/components/Card';
 import { DescriptionItem } from '@/components/Description';
+import { MyGallery } from '@/components/MyGallery';
 import { Icon24CancelOutline } from '@vkontakte/icons';
-import { Div, Group, IconButton, ModalPage, ModalPageHeader, Spacing, Title } from '@vkontakte/vkui';
+import {  Group, IconButton, ModalPage, ModalPageHeader, Spacing, Title } from '@vkontakte/vkui';
 import { ModalProps } from '../ModalProps';
 
 interface Props extends ModalProps {}
@@ -30,9 +31,9 @@ export const AttractionModal = ({ id, closeModal }: Props) => {
       }
     >
       <Group>
-        <Div>{/* <MyGallerr/> */}</Div>
+        <MyGallery/>
+        <Spacing />
         <DescriptionItem description="Смоленская крепостная стена – памятник русского оборонительного зодчества, одна из крупнейших крепостей мира, символ российской..." />
-
         <Spacing />
         <CardAddress
           street="ул. Барклая-Де-Толли 7, Смоленск"
