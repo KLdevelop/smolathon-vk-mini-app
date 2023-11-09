@@ -9,4 +9,5 @@ export * from './CircleCheckbox';
 export * from './Map';
 export * from './StickyFooter';
 export * from './PanelTabSelector';
-export * from './MyGallery'
+export * from './MyGallery';
+export * from './YanMap';
