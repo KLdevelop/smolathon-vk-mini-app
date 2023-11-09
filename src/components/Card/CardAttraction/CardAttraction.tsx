@@ -1,6 +1,7 @@
-import { Card, Counter, Div, Image, Text, Subhead } from '@vkontakte/vkui';
-// import {  } from 'node_modules/@vkontakte/vkui/dist/index';
+import { Card, Counter, Image, Text, Subhead } from '@vkontakte/vkui';
 import Smolensk from '@/data/Smolensk.png';
+import './CardAttraction.scss';
+
 interface CardAttractionProps {
   num: number;
   title: string;
@@ -10,22 +11,24 @@ interface CardAttractionProps {
 
 export const CardAttraction = ({ num, title, type, address }: CardAttractionProps) => {
   return (
-    <Card style={{ maxWidth: '360px' }}>
-      <Div style={{ display: 'flex', alignItems: 'start', justifyContent: 'space-around' }}>
+    <Card className="cardAttraction">
+      <div className="cardAttraction__leftGroup">
         <Counter mode="primary">{num}</Counter>
-        <div>
-          <div style={{ marginBottom: '6%' }}>
-            <Subhead weight="2">{title}</Subhead>
-            <Text weight="2" style={{ color: 'var(--vkui--color_text_secondary)', fontSize: '13px' }}>
+        <div className="cardAttraction__content">
+          <div className="cardAttraction__content__titleBlock">
+            <Subhead weight="3" className="cardAttraction__content__title">
+              {title}
+            </Subhead>
+            <Subhead weight="2" className="cardAttraction__content__type">
               {type}
-            </Text>
+            </Subhead>
           </div>
-          <Text style={{ color: 'var(--vkui--color_text_secondary)', fontSize: '13px' }}>{address}</Text>
+          <Text className="cardAttraction__content__address">{address}</Text>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Image src={Smolensk} size={64} />
-        </div>
-      </Div>
+      </div>
+      <div className="cardAttraction__image">
+        <Image src={Smolensk} size={72} />
+      </div>
     </Card>
   );
 };

@@ -1,0 +1,34 @@
+.cardAttraction {
+  padding: 10px;
+  // width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: start;
+
+  &__leftGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__title {
+      font-size: 15px;
+    }
+
+    &__type,
+    &__address {
+      font-size: '13px';
+      color: var(--light-text-secondary, #818c99);
+    }
+
+    &__titleBlock {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
