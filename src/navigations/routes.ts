@@ -24,6 +24,13 @@ export const routes = [
     path: '/about_quest',
     view: Tabs.QuestsTab,
     panel: QuestsPanelIDs.AboutQuest,
+    tab: 'about',
+  },
+  {
+    path: '/about_quest/route',
+    view: Tabs.QuestsTab,
+    panel: QuestsPanelIDs.AboutQuest,
+    tab: 'route',
   },
   {
     path: '/market',
