@@ -4,6 +4,7 @@ import { cities } from './constants';
 import { ModalProps } from '../ModalProps';
 import { useState } from 'react';
 import { CircleCheckbox, StickyFooter } from '@/components';
+import { useSearchSettlementsQuery } from '@/api/settlementsApi';
 
 interface Props extends ModalProps {
   activeCity: string | null;
@@ -14,9 +15,12 @@ const headerTitle = 'Выбор города';
 
 export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const filteredCities = cities.filter(({ city }) =>
-    city.trim().toLowerCase().includes(searchValue.trim().toLowerCase()),
-  );
+  // const filteredCities = cities.filter(({ city }) =>
+  //   city.trim().toLowerCase().includes(searchValue.trim().toLowerCase()),
+  // );
+  const { data: citiesResponse } = useSearchSettlementsQuery(searchValue);
+  console.log(citiesResponse);
+  const filteredCities = citiesResponse && citiesResponse.ok ? citiesResponse.result : undefined;
   const [selectedCity, setSelectedCity] = useState<string | null>(activeCity);
 
   const onAcceptClick = () => {
@@ -43,15 +47,16 @@ export const CityModal = ({ id, activeCity, closeModal, setActiveCity }: Props) 
       }
     >
       <Group header={<Search value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />}>
-        {filteredCities.map(({ city, id }) => (
-          <Cell
-            key={id}
-            after={selectedCity == city && <CircleCheckbox selected />}
-            onClick={() => setSelectedCity(city)}
-          >
-            {city}
-          </Cell>
-        ))}
+        {!!filteredCities &&
+          filteredCities.map(({ id, name }) => (
+            <Cell
+              key={id}
+              after={selectedCity == name && <CircleCheckbox selected />}
+              onClick={() => setSelectedCity(name)}
+            >
+              {name}
+            </Cell>
+          ))}
       </Group>
       <StickyFooter>
         <Button size="l" stretched onClick={onAcceptClick}>

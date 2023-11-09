@@ -7,6 +7,7 @@ import './QuestsPanel.scss';
 import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
 import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useGetQuestsListQuery } from '@/api/questsApi';
 
 export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const { tab: activeTabId } = useActiveVkuiLocation();
@@ -28,6 +29,8 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const setActivePanel = (panel: QuestsPanelID) => {
     navigator.push(`/${panel}`);
   };
+  const s = useGetQuestsListQuery();
+  console.log(s);
 
   return (
     <Panel nav={id}>

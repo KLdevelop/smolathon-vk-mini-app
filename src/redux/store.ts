@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { activeModalReducer, selectedCityReducer } from './slices';
+import { questsApi } from '@/api';
+import { settlementsApi } from '@/api/settlementsApi';
 
 const store = configureStore({
   reducer: {
     modal: activeModalReducer,
     city: selectedCityReducer,
+    [questsApi.reducerPath]: questsApi.reducer,
+    [settlementsApi.reducerPath]: settlementsApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(questsApi.middleware).concat(settlementsApi.middleware),
 });
 
 export default store;
