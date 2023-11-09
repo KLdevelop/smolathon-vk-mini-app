@@ -1,12 +1,11 @@
 import { Button, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 import './AboutQuestPanel.scss';
 import { PanelTabSelector, StickyFooter, TabHeader } from '@/components';
-import { useState } from 'react';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { AboutContent, RouteContent } from '..';
 import { AboutQuestTab, AboutQuestTabs } from './aboutQuestTabIDs';
 import { quests } from '@/data/quests';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -15,8 +14,20 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
   const tabs: AboutQuestTab[] = Object.values(AboutQuestTabs);
-  const [activeTab, setActiveTab] = useState<AboutQuestTab>(AboutQuestTabs.about);
+  // const [_, setActiveTab] = useState<AboutQuestTab>(AboutQuestTabs.about);
+  const { tab } = useActiveVkuiLocation();
+  console.log(tab);
   const navigator = useRouteNavigator();
+  const routes = {
+    [AboutQuestTabs.about]: '/about_quest',
+    [AboutQuestTabs.route]: '/about_quest/route',
+  };
+  const tabById: Record<string, AboutQuestTab> = {
+    ['about']: AboutQuestTabs.about,
+    ['route']: AboutQuestTabs.route,
+  };
+  const activeTab: AboutQuestTab = tabById[tab ?? 'about'] ?? AboutQuestTabs.about;
+  const setActiveTab = (tab: AboutQuestTab) => navigator.push(routes[tab]);
   // const setActivePanel = (panel: QuestsPanelID) => {
   //   navigator.push(routes[root][Tabs.QuestsTab][panel]);
   // };
