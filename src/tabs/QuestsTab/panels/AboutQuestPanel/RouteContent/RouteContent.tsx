@@ -1,16 +1,22 @@
 import { Group, CardGrid } from '@vkontakte/vkui';
 import './RouteContent.scss';
 import { YanMap, CardAttraction } from '@/components';
+import { getAllCoordinatesFromSteps } from '@/utils';
 
-export const RouteContent = () => {
+interface RouteContentProps {
+  questData: QuestData;
+}
+
+export const RouteContent = ({ questData }: RouteContentProps) => {
+  const { steps } = questData;
+  console.log(getAllCoordinatesFromSteps(steps));
   return (
     <Group className="routeContent">
-      <YanMap />
+      <YanMap markers={getAllCoordinatesFromSteps(questData.steps)} />
       <CardGrid size="l" className="routeContent__attractions">
-        <CardAttraction num={1} title="Русская старина" type="Музей" address="ул. Тенишовой 7. Смоленск" />
-        <CardAttraction num={2} title="Смоленск - щит России" type="Музей" address="3 Смоленск" />
-        <CardAttraction num={3} title="Исторический музей" type="Музей" address="ул. Ленина 8 . Смоленск" />
-        <CardAttraction num={4} title="Смоленская крепость" type="Замки" address=" Смоленск" />
+        {steps.map((step) => (
+          <CardAttraction num={step.order} title={step.name} type={step.place_type} address={step.address} />
+        ))}
       </CardGrid>
     </Group>
   );

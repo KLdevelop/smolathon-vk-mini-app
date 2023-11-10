@@ -3,8 +3,8 @@ import './AboutQuestPanel.scss';
 import { StickyFooter, TabHeader } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { AboutContent, RouteContent } from '..';
-import { quests } from '@/data/quests';
-import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useActiveVkuiLocation, useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useGetQuestByIdQuery } from '@/api';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -14,18 +14,21 @@ import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-app
 export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
   const { tab: activeTabId } = useActiveVkuiLocation();
   const navigator = useRouteNavigator();
+  const { questId } = useParams<'questId'>() as { questId?: string };
   const tabs = [
     {
       tabId: 'about',
       title: 'О квесте',
-      route: '/about_quest',
+      route: `/about_quest/${questId}`,
     },
     {
       tabId: 'route',
       title: 'Маршрут',
-      route: '/about_quest/route',
+      route: `/about_quest/${questId}/route`,
     },
   ];
+  const { data: questDataResponse } = useGetQuestByIdQuery(questId ?? '');
+  const questData = questDataResponse?.result;
 
   return (
     <Panel nav={id}>
@@ -33,7 +36,8 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
       <PanelHeader before={<PanelHeaderBack onClick={() => navigator.back()} />} separator={false} />
       <TabHeader activeTabId={activeTabId ?? 'new'} tabs={tabs} />
       {/* </FixedLayout> */}
-      {activeTabId === 'about' ? <AboutContent questData={quests[0]} /> : <RouteContent />}
+      {questData &&
+        (activeTabId === 'about' ? <AboutContent questData={questData} /> : <RouteContent questData={questData} />)}
       <StickyFooter>
         <Button stretched size="l" onClick={() => navigator.push('/quest')}>
           Начать квест
