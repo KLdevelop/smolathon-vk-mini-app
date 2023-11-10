@@ -2,12 +2,12 @@ import { Button, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/v
 import { Icon16DropdownOutline } from '@vkontakte/icons';
 import { TabHeader, CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
-import { quests } from '@/data/quests';
 import './QuestsPanel.scss';
 import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
 import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useGetQuestsListQuery } from '@/api/questsApi';
+import { routeTypeToString } from '@/utils';
 
 export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const { tab: activeTabId } = useActiveVkuiLocation();
@@ -23,14 +23,14 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
       route: '/active_quests',
     },
   ];
-  const { selectedCity } = useAppSelector((state) => state.city);
+  const { settlement } = useAppSelector((state) => state.city);
   const openCityModal = useOpenModal(ModalIDs.CityModal);
   const navigator = useRouteNavigator();
   const setActivePanel = (panel: QuestsPanelID) => {
     navigator.push(`/${panel}`);
   };
-  const s = useGetQuestsListQuery();
-  console.log(s);
+  const { data: questsResponse } = useGetQuestsListQuery(settlement?.id ?? '');
+  const quests = questsResponse?.result ?? [];
 
   return (
     <Panel nav={id}>
@@ -44,7 +44,7 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
           onClick={openCityModal}
         >
           <Title level="1" normalize>
-            {selectedCity || 'Выбрать город'}
+            {settlement?.name || 'Выбрать город'}
           </Title>
         </Button>
       </PanelHeader>
@@ -55,12 +55,12 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
             <CardContent
               onClick={() => setActivePanel(QuestsPanelIDs.AboutQuest)}
               key={quest.id}
-              img={quest.img}
-              estimationTime={quest.estimationTime}
-              title={quest.title}
+              img={quest.preview.sizes.o.url}
+              estimationTime={`~ ${quest.duration} минут`}
+              title={quest.name}
               description={quest.description}
-              type={quest.type}
-              reward={quest.reward}
+              type={routeTypeToString(quest.type)}
+              reward={`${quest.reward} смолкоинов`}
             />
           ))}
         </CardGrid>
