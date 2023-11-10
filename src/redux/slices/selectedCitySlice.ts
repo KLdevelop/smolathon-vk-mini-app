@@ -5,7 +5,10 @@ export interface SelectedCityState {
 }
 
 const initialState: SelectedCityState = {
-  settlement: null,
+  settlement: {
+    id: 'f218690b-4948-4217-8c76-7a433f533f42',
+    name: 'Смоленск',
+  },
 };
 
 const selectedCitySlice = createSlice({
