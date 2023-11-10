@@ -15,3 +15,5 @@ export * from './YanMap';
 export * from './InpGroup';
 export * from './ArcticleLink';
 export * from './Task';
+export * from './Timer'
+export * from './HealthBar'

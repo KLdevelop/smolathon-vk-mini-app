@@ -1,0 +1,42 @@
+.healthBar {
+  width: 130px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+
+  &_user {
+    &_cell {
+      padding: 0;
+      &_name {
+        color: var(--light-text-primary);
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 133.333% */
+        letter-spacing: 0.1px;
+      }
+    }
+    &:first-child {
+      margin-right: 5px;
+    }
+  }
+  &_progress {
+    margin-top: 4px;
+  }
+  &_hp {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    &_like {
+      color: var(--vkui--color_text_accent);
+    }
+    &_val {
+      color: var(--light-text-primary);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%;
+      margin-left: 3px;
+    }
+  }
+}
