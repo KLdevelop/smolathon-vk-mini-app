@@ -1,7 +1,7 @@
 interface ApiResponse<T> {
-  description?: string;
-  error_code?: number;
-  ok?: boolean;
+  description: string;
+  error_code: number;
+  ok: boolean;
   result: T;
 }
 
