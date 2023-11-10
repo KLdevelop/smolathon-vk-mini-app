@@ -4,7 +4,7 @@ import './CardAttraction.scss';
 import { StatusBlock } from './StatusBlock';
 
 interface CardAttractionProps {
-  status: null | string;
+  status?: null | string;
   num: number;
   title: string;
   type: string;
