@@ -1,20 +1,20 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface InitialState {
-  selectedCity: string | null;
+export interface SelectedCityState {
+  settlement: Settlement | null;
 }
 
-const initialState: InitialState = {
-  selectedCity: null,
+const initialState: SelectedCityState = {
+  settlement: null,
 };
 
 const selectedCitySlice = createSlice({
   name: 'selectedCity',
   initialState,
   reducers: {
-    selectCity: (state, { payload }: PayloadAction<string | null>) => ({
+    selectCity: (state, { payload: settlement }: PayloadAction<SelectedCityState['settlement']>) => ({
       ...state,
-      selectedCity: payload,
+      settlement,
     }),
   },
 });
