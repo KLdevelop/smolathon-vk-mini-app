@@ -5,6 +5,8 @@ import { QuestsPanelProps } from '../questsPanelProps';
 import { AboutContent, RouteContent } from '..';
 import { useActiveVkuiLocation, useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useGetQuestByIdQuery } from '@/api';
+import { useAppDispatch } from '@/hooks';
+import { setActiveQuest } from '@/redux/slices';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -28,7 +30,12 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
     },
   ];
   const { data: questDataResponse } = useGetQuestByIdQuery(questId ?? '');
-  const questData = questDataResponse?.result;
+  const questData = questDataResponse?.result || null;
+  const dispatch = useAppDispatch();
+  const onStartQuestClick = () => {
+    dispatch(setActiveQuest(questData));
+    navigator.push('/quest');
+  };
 
   return (
     <Panel nav={id}>
@@ -39,7 +46,7 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
       {questData &&
         (activeTabId === 'about' ? <AboutContent questData={questData} /> : <RouteContent questData={questData} />)}
       <StickyFooter>
-        <Button stretched size="l" onClick={() => navigator.push('/quest')}>
+        <Button stretched size="l" onClick={onStartQuestClick}>
           Начать квест
         </Button>
       </StickyFooter>
