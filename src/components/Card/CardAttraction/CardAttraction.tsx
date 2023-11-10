@@ -1,8 +1,6 @@
 import { Card, Counter, Image, Text, Subhead } from '@vkontakte/vkui';
 import './CardAttraction.scss';
 import { StatusBlock } from './StatusBlock';
-import { useOpenModal } from '@/hooks';
-import { ModalIDs } from '@/components';
 
 interface CardAttractionProps {
   status?: null | string;
@@ -11,13 +9,12 @@ interface CardAttractionProps {
   type: string;
   address: string;
   img?: string;
+  onClick?: () => void;
 }
 
-export const CardAttraction = ({ num, title, type, address, img, status = null }: CardAttractionProps) => {
-  const openAttractionModal = useOpenModal(ModalIDs.AttractionModal);
-
+export const CardAttraction = ({ num, title, type, address, img, status = null, onClick }: CardAttractionProps) => {
   return (
-    <Card className="cardAttraction" onClick={openAttractionModal}>
+    <Card className="cardAttraction" onClick={onClick}>
       <div className="cardAttraction__leftGroup">
         <Counter mode="primary">{num}</Counter>
         <div className="cardAttraction__content">

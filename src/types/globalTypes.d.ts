@@ -24,10 +24,11 @@ interface Schedule {
 }
 
 interface Step {
+  description?: string;
   address: string;
   email: string;
   id: string;
-  images: Preview[];
+  images: (Preview | undefined)[];
   latitude: number;
   longitude: number;
   name: string;
@@ -35,7 +36,7 @@ interface Step {
   phone: string;
   place_type: string;
   quest_id: string;
-  schedule: Schedule;
+  schedule: Schedule[];
   website: string;
 }
 
