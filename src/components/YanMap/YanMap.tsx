@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { calculateMapCenter } from '@/utils';
 import { useOpenModal } from '@/hooks/useActiveModal';
 import { ModalIDs } from '../Modals/modalIDs';
-import YandexLogo from '@/data/yandexlogo.svg';
+// import YandexLogo from '@/data/yandexlogo.svg';
 
 const MapContainer = styled.div`
   display: grid;
@@ -32,7 +32,7 @@ export const YanMap = ({ markers }: MapProps) => {
             {markers.map((coordinate, index) => (
               <Placemark onClick={openAttractionModal} key={`${index}-${coordinate}`} geometry={coordinate} />
             ))}
-            <Placemark
+            {/* <Placemark
               onClick={openAttractionModal}
               key="user"
               geometry={markers}
@@ -41,7 +41,7 @@ export const YanMap = ({ markers }: MapProps) => {
                 iconImageSize: [40, 40],
                 iconImageHref: YandexLogo,
               }}
-            />
+            /> */}
             <ZoomControl />
             <GeolocationControl />
             <Polyline
