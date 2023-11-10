@@ -1,6 +1,6 @@
 import { Div, Title } from '@vkontakte/vkui';
 import './AboutContent.scss';
-import { DescriptionItem, InfoItem } from '@/components';
+import { ArticleLink, DescriptionItem, InfoItem } from '@/components';
 
 interface AboutContentProps {
   questData: QuestData;
@@ -9,6 +9,7 @@ interface AboutContentProps {
 export const AboutContent = ({ questData }: AboutContentProps) => {
   return (
     <Div style={{ display: 'grid', gap: '20px' }}>
+      <ArticleLink/>
       <Title>{questData.title}</Title>
       <Div style={{ padding: 0 }}>
         <img src={questData.img} alt="" style={{ width: '100%', height: '100%' }} />
