@@ -11,7 +11,10 @@ export const questsApi = createApi({
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
       query: (id) => ({ url: `/1/${id}` }),
     }),
+    startQuest: builder.query<void, { userId: string; questId: string }>({
+      query: ({ userId, questId }) => ({ url: `start/${userId}/${questId}` }),
+    }),
   }),
 });
 
-export const { useGetQuestsListQuery, useGetQuestByIdQuery } = questsApi;
+export const { useGetQuestsListQuery, useGetQuestByIdQuery, useStartQuestQuery } = questsApi;
