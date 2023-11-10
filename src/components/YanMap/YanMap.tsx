@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GeolocationControl, Map, Placemark, YMaps, ZoomControl, Polyline } from '@pbe/react-yandex-maps';
 import styled from 'styled-components';
-import { calculateMapCenter } from '@/utils';
+import { calculateMapCenter, getAllCoordinatesFromSteps } from '@/utils';
 import { useOpenModal } from '@/hooks/useActiveModal';
 import { ModalIDs } from '../Modals/modalIDs';
 import YandexLogo from '@/data/yandexlogo.svg';
@@ -13,10 +13,12 @@ const MapContainer = styled.div`
 `;
 
 interface MapProps {
-  markers: number[][];
+  steps: Step[];
 }
 
-export const YanMap = ({ markers }: MapProps) => {
+export const YanMap = ({ steps }: MapProps) => {
+  const markers = getAllCoordinatesFromSteps(steps);
+
   const [mapData] = useState<ymaps.IMapState>({
     center: calculateMapCenter(markers),
     zoom: 13,
@@ -35,7 +37,7 @@ export const YanMap = ({ markers }: MapProps) => {
             <Placemark
               onClick={openAttractionModal}
               key="user"
-              geometry={markers}
+              geometry={mapData.center}
               options={{
                 iconLayout: 'default#image',
                 iconImageSize: [40, 40],

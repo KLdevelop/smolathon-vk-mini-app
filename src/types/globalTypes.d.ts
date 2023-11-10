@@ -24,6 +24,7 @@ interface Schedule {
 }
 
 interface Step {
+  description?: string;
   address: string;
   email: string;
   id: string;

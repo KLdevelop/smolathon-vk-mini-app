@@ -1,7 +1,6 @@
 import { Group, CardGrid } from '@vkontakte/vkui';
 import './RouteContent.scss';
 import { YanMap, CardAttraction } from '@/components';
-import { getAllCoordinatesFromSteps } from '@/utils';
 
 interface RouteContentProps {
   questData: QuestData;
@@ -12,7 +11,7 @@ export const RouteContent = ({ questData }: RouteContentProps) => {
 
   return (
     <Group className="routeContent">
-      <YanMap markers={getAllCoordinatesFromSteps(questData.steps)} />
+      <YanMap steps={steps} />
       <CardGrid size="l" className="routeContent__attractions">
         {steps.map((step) => (
           <CardAttraction

@@ -5,9 +5,11 @@ import { Icon24CancelOutline } from '@vkontakte/icons';
 import { Div, IconButton, ModalPage, ModalPageHeader, Spacing, Title } from '@vkontakte/vkui';
 import { ModalProps } from '../ModalProps';
 
-interface Props extends ModalProps {}
+interface Props extends ModalProps {
+  step: Step;
+}
 
-export const AttractionModal = ({ id, closeModal }: Props) => {
+export const AttractionModal = ({ id, closeModal, step }: Props) => {
   return (
     <ModalPage
       id={id}
@@ -22,21 +24,16 @@ export const AttractionModal = ({ id, closeModal }: Props) => {
             </IconButton>
           }
         >
-          <Title level="2">Смоленск - щит России</Title>
+          <Title level="2">{step.name}</Title>
         </ModalPageHeader>
       }
     >
       <Div>
         <MyGallery />
         <Spacing />
-        <DescriptionItem description="Смоленская крепостная стена – памятник русского оборонительного зодчества, одна из крупнейших крепостей мира, символ российской..." />
+        <DescriptionItem description={step.description ?? ''} />
         <Spacing />
-        <CardAddress
-          street="ул. Барклая-Де-Толли 7, Смоленск"
-          phone="+7 4812 33 95 85"
-          email="museum@smolkrepost.ru"
-          web="https://smolkrepost.ru"
-        />
+        <CardAddress street={step.address} phone={step.phone} email={step.email} web={step.website} />
         <Spacing />
         <CardSchedule />
         <Spacing />
