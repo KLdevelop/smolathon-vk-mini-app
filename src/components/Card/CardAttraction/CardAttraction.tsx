@@ -1,15 +1,17 @@
 import { Card, Counter, Image, Text, Subhead } from '@vkontakte/vkui';
 import Smolensk from '@/data/Smolensk.png';
 import './CardAttraction.scss';
+import { StatusBlock } from './StatusBlock';
 
 interface CardAttractionProps {
+  status: null | string;
   num: number;
   title: string;
   type: string;
   address: string;
 }
 
-export const CardAttraction = ({ num, title, type, address }: CardAttractionProps) => {
+export const CardAttraction = ({ num, title, type, address, status = null }: CardAttractionProps) => {
   return (
     <Card className="cardAttraction">
       <div className="cardAttraction__leftGroup">
@@ -27,6 +29,7 @@ export const CardAttraction = ({ num, title, type, address }: CardAttractionProp
         </div>
       </div>
       <div className="cardAttraction__image">
+        {status && <StatusBlock status={status} />}
         <Image src={Smolensk} size={72} />
       </div>
     </Card>
