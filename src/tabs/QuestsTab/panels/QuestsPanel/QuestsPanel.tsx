@@ -3,7 +3,6 @@ import { Icon16DropdownOutline } from '@vkontakte/icons';
 import { TabHeader, CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import './QuestsPanel.scss';
-import { QuestsPanelID, QuestsPanelIDs } from '@/navigations';
 import { useAppSelector, useOpenModal } from '@/hooks';
 import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useGetQuestsListQuery } from '@/api/questsApi';
@@ -26,11 +25,12 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   const { settlement } = useAppSelector((state) => state.city);
   const openCityModal = useOpenModal(ModalIDs.CityModal);
   const navigator = useRouteNavigator();
-  const setActivePanel = (panel: QuestsPanelID) => {
-    navigator.push(`/${panel}`);
-  };
   const { data: questsResponse } = useGetQuestsListQuery(settlement?.id ?? '');
   const quests = questsResponse?.result ?? [];
+
+  const onAboutTabClick = (questId: string) => {
+    navigator.push(`/about_quest/${questId}`);
+  };
 
   return (
     <Panel nav={id}>
@@ -53,7 +53,7 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
         <CardGrid size="l" className="questsPanelCardGrid">
           {quests.map((quest) => (
             <CardContent
-              onClick={() => setActivePanel(QuestsPanelIDs.AboutQuest)}
+              onClick={() => onAboutTabClick(quest.id)}
               key={quest.id}
               img={quest.preview.sizes.o.url}
               estimationTime={`~ ${quest.duration} минут`}
