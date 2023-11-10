@@ -28,13 +28,13 @@ export const routes = [
     tab: 'active',
   },
   {
-    path: '/about_quest',
+    path: '/about_quest/:questId',
     view: Tabs.QuestsTab,
     panel: QuestsPanelIDs.AboutQuest,
     tab: 'about',
   },
   {
-    path: '/about_quest/route',
+    path: '/about_quest/:questId/route',
     view: Tabs.QuestsTab,
     panel: QuestsPanelIDs.AboutQuest,
     tab: 'route',
