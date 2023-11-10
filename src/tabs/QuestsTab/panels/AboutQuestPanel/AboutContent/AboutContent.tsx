@@ -1,6 +1,6 @@
 import { Div, Title } from '@vkontakte/vkui';
 import './AboutContent.scss';
-import { DescriptionItem, InfoItem } from '@/components';
+import {  DescriptionItem, InfoItem } from '@/components';
 
 interface AboutContentProps {
   questData: QuestData;
