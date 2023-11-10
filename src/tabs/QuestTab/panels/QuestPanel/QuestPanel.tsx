@@ -4,6 +4,7 @@ import { Icon20HelpOutline } from '@vkontakte/icons';
 import { TabHeader } from '@/components';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 import { RouteContent } from './RouteContent';
+import { InfoContent } from './InfoContent';
 
 interface Props extends QuestPanelProps {
   activeQuest: QuestData | null;
@@ -26,9 +27,16 @@ export const QuestPanel = ({ id, activeQuest }: Props) => {
 
   return (
     <Panel nav={id}>
-      <PanelHeader after={<Icon20HelpOutline />}>Квест</PanelHeader>
+      <PanelHeader after={<Icon20HelpOutline />} separator={false}>
+        Квест
+      </PanelHeader>
       <TabHeader activeTabId={activeTabId ?? 'route'} tabs={tabs} />
-      {activeQuest && activeTabId === 'route' ? <RouteContent steps={activeQuest.steps} /> : null}
+      {activeQuest &&
+        (activeTabId === 'route' ? (
+          <RouteContent steps={activeQuest.steps} />
+        ) : (
+          <InfoContent steps={activeQuest.steps} />
+        ))}
     </Panel>
   );
 };

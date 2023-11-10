@@ -38,6 +38,7 @@ interface Step {
   quest_id: string;
   schedule: Schedule[];
   website: string;
+  status: string;
 }
 
 interface QuestData {
@@ -50,6 +51,7 @@ interface QuestData {
   settlement_id: string;
   steps: Step[];
   type: string;
+  is_active: boolean;
 }
 
 interface Settlement {
