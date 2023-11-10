@@ -1,7 +1,7 @@
 import { Div, Title } from '@vkontakte/vkui';
 import './AboutContent.scss';
 import { routeTypeToString } from '@/utils';
-import { ArticleLink, DescriptionItem, InfoItem } from '@/components';
+import { DescriptionItem, InfoItem } from '@/components';
 
 interface AboutContentProps {
   questData: QuestData;
@@ -10,7 +10,6 @@ interface AboutContentProps {
 export const AboutContent = ({ questData }: AboutContentProps) => {
   return (
     <Div style={{ display: 'grid', gap: '20px' }}>
-      <ArticleLink />
       <Title>{questData.name}</Title>
       <Div style={{ padding: 0, borderRadius: '8px' }}>
         <img

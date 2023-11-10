@@ -1,5 +1,5 @@
 import { Task } from '@/components/Task';
-import { Card, Div, Headline, Title } from '@vkontakte/vkui';
+import { Card, Div, Headline } from '@vkontakte/vkui';
 
 export const CardTask = () => {
   return (
