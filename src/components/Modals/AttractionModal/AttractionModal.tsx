@@ -29,13 +29,13 @@ export const AttractionModal = ({ id, closeModal, step }: Props) => {
       }
     >
       <Div>
-        <MyGallery />
+        <MyGallery images={step.images} />
         <Spacing />
         <DescriptionItem description={step.description ?? ''} />
         <Spacing />
         <CardAddress street={step.address} phone={step.phone} email={step.email} web={step.website} />
         <Spacing />
-        <CardSchedule />
+        <CardSchedule schedule={step.schedule} />
         <Spacing />
       </Div>
     </ModalPage>
