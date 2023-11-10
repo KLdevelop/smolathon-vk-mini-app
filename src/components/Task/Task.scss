@@ -1,0 +1,23 @@
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.1px;
+    color: var(--vkui--color_text_primary);
+    margin-left: 10px;
+  }
+  &_icon > * {
+    padding: 0;
+  }
+}
