@@ -9,7 +9,7 @@ export const questsApi = createApi({
       query: (settlement_id) => ({ url: `list?settlement_id=${settlement_id}` }),
     }),
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
-      query: (id) => ({ url: id }),
+      query: (id) => ({ url: `/1/${id}` }),
     }),
   }),
 });
