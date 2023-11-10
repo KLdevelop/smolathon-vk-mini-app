@@ -4,9 +4,10 @@ import { StickyFooter, TabHeader } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { AboutContent, RouteContent } from '..';
 import { useActiveVkuiLocation, useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import { useGetQuestByIdQuery } from '@/api';
+import { useGetQuestByIdQuery, useStartQuestQuery } from '@/api';
 import { useAppDispatch } from '@/hooks';
 import { setActiveQuest } from '@/redux/slices';
+import { useState } from 'react';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -32,7 +33,16 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
   const { data: questDataResponse } = useGetQuestByIdQuery(questId ?? '');
   const questData = questDataResponse?.result || null;
   const dispatch = useAppDispatch();
+  const [skipStarting, setSkipStarting] = useState<boolean>(true);
+  useStartQuestQuery(
+    { userId: '1', questId: questData?.id ?? '' },
+    {
+      skip: skipStarting,
+    },
+  );
+
   const onStartQuestClick = () => {
+    setSkipStarting(false);
     dispatch(setActiveQuest(questData));
     navigator.push('/quest');
   };
