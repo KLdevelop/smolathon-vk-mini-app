@@ -14,4 +14,4 @@ export const questsApi = createApi({
   }),
 });
 
-export const { useGetQuestsListQuery } = questsApi;
+export const { useGetQuestsListQuery, useGetQuestByIdQuery } = questsApi;
