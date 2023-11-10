@@ -16,11 +16,10 @@ export const CardContent = ({ onClick, img, estimationTime, title, description, 
     <ContentCard
       onClick={onClick}
       src={img}
-      alt="Picture of person's left hand with pink paint"
       subtitle={estimationTime}
       header={title}
       text={description}
-      caption={`${type} ${reward}`}
+      caption={`${type} - ${reward}`}
       maxHeight={330}
     />
   );
