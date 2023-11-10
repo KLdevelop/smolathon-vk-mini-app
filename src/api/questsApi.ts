@@ -3,10 +3,10 @@ import { apiUrl } from './apiUrl';
 
 export const questsApi = createApi({
   reducerPath: 'questsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: apiUrl + '/quests' }),
+  baseQuery: fetchBaseQuery({ baseUrl: apiUrl + 'quests' }),
   endpoints: (builder) => ({
-    getQuestsList: builder.query<ApiResponse<QuestData[]>, void>({
-      query: (settlement_id) => ({ url: `list/settlement_id=${settlement_id}` }),
+    getQuestsList: builder.query<ApiResponse<QuestData[]>, string>({
+      query: (settlement_id) => ({ url: `list?settlement_id=${settlement_id}` }),
     }),
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
       query: (id) => ({ url: id }),
