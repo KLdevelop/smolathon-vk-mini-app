@@ -1,5 +1,4 @@
 import { Card, Counter, Image, Text, Subhead } from '@vkontakte/vkui';
-import Smolensk from '@/data/Smolensk.png';
 import './CardAttraction.scss';
 import { StatusBlock } from './StatusBlock';
 import { useOpenModal } from '@/hooks';
@@ -11,9 +10,10 @@ interface CardAttractionProps {
   title: string;
   type: string;
   address: string;
+  img?: string;
 }
 
-export const CardAttraction = ({ num, title, type, address, status = null }: CardAttractionProps) => {
+export const CardAttraction = ({ num, title, type, address, img, status = null }: CardAttractionProps) => {
   const openAttractionModal = useOpenModal(ModalIDs.AttractionModal);
 
   return (
@@ -34,7 +34,7 @@ export const CardAttraction = ({ num, title, type, address, status = null }: Car
       </div>
       <div className="cardAttraction__image">
         {status && <StatusBlock status={status} />}
-        <Image src={Smolensk} size={72} />
+        <Image src={img} size={72} />
       </div>
     </Card>
   );

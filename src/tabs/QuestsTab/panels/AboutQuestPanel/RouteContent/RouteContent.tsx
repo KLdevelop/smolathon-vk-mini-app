@@ -9,13 +9,20 @@ interface RouteContentProps {
 
 export const RouteContent = ({ questData }: RouteContentProps) => {
   const { steps } = questData;
-  console.log(getAllCoordinatesFromSteps(steps));
+
   return (
     <Group className="routeContent">
       <YanMap markers={getAllCoordinatesFromSteps(questData.steps)} />
       <CardGrid size="l" className="routeContent__attractions">
         {steps.map((step) => (
-          <CardAttraction num={step.order} title={step.name} type={step.place_type} address={step.address} />
+          <CardAttraction
+            key={step.id}
+            num={step.order}
+            title={step.name}
+            type={step.place_type}
+            address={step.address}
+            img={step.images.length > 0 ? step.images[0].sizes.m.url : undefined}
+          />
         ))}
       </CardGrid>
     </Group>
