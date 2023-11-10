@@ -11,4 +11,5 @@ export * from './StickyFooter';
 export * from './PanelTabSelector';
 export * from './MyGallery';
 export * from './YanMap';
-export * from './InpGroup'
+export * from './InpGroup';
+export * from './ArcticleLink';
