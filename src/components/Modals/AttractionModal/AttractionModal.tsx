@@ -2,16 +2,12 @@ import { CardAddress, CardSchedule } from '@/components/Card';
 import { DescriptionItem } from '@/components/Description';
 import { MyGallery } from '@/components/MyGallery';
 import { Icon24CancelOutline } from '@vkontakte/icons';
-import {  Group, IconButton, ModalPage, ModalPageHeader, Spacing, Title } from '@vkontakte/vkui';
+import { Div, IconButton, ModalPage, ModalPageHeader, Spacing, Title } from '@vkontakte/vkui';
 import { ModalProps } from '../ModalProps';
 
 interface Props extends ModalProps {}
 
 export const AttractionModal = ({ id, closeModal }: Props) => {
-  // const onAcceptClick = () => {
-  //   closeModal();
-  // };
-
   return (
     <ModalPage
       id={id}
@@ -30,8 +26,8 @@ export const AttractionModal = ({ id, closeModal }: Props) => {
         </ModalPageHeader>
       }
     >
-      <Group>
-        <MyGallery/>
+      <Div>
+        <MyGallery />
         <Spacing />
         <DescriptionItem description="Смоленская крепостная стена – памятник русского оборонительного зодчества, одна из крупнейших крепостей мира, символ российской..." />
         <Spacing />
@@ -44,12 +40,7 @@ export const AttractionModal = ({ id, closeModal }: Props) => {
         <Spacing />
         <CardSchedule />
         <Spacing />
-      </Group>
-      {/* <StickyFooter>
-            <Button size="l" stretched onClick={onAcceptClick}>
-              Применить
-            </Button>
-          </StickyFooter> */}
+      </Div>
     </ModalPage>
   );
 };
