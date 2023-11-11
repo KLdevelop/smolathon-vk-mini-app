@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const CheckELem = ({ value }: Props) => {
-  return <Checkbox defaultChecked>{value}</Checkbox>;
+  return <Checkbox>{value}</Checkbox>;
 };

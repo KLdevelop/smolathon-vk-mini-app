@@ -15,21 +15,34 @@
         line-height: 20px; /* 133.333% */
         letter-spacing: 0.1px;
       }
-    }
-    &:first-child {
-      margin-right: 5px;
+      &_boss {
+        margin-bottom: 11px;
+        &_name {
+          text-align: end;
+          color: var(--light-text-primary);
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 20px; /* 133.333% */
+          letter-spacing: 0.1px;
+        }
+      }
     }
   }
-  &_progress {
+
+  &_progress_user {
     margin-top: 4px;
   }
+
   &_hp {
     margin-top: 6px;
     display: flex;
     align-items: center;
+
     &_like {
       color: var(--vkui--color_text_accent);
     }
+
     &_val {
       color: var(--light-text-primary);
       font-size: 13px;
