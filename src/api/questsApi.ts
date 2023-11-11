@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { apiUrl } from './apiUrl';
+import { getUserId } from '@/utils';
+import axios from 'axios';
+
+const userId = getUserId();
 
 export const questsApi = createApi({
   reducerPath: 'questsApi',
@@ -9,12 +13,13 @@ export const questsApi = createApi({
       query: (settlement_id) => ({ url: `list?settlement_id=${settlement_id}` }),
     }),
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
-      query: (id) => ({ url: `/1/${id}` }),
-    }),
-    startQuest: builder.query<void, { userId: string; questId: string }>({
-      query: ({ userId, questId }) => ({ url: `start/${userId}/${questId}` }),
+      query: (id) => ({ url: `/${userId}/${id}` }),
     }),
   }),
 });
 
-export const { useGetQuestsListQuery, useGetQuestByIdQuery, useStartQuestQuery } = questsApi;
+export const startQuest = (questId: string) => {
+  axios.post(apiUrl + `quests/start/${userId}/${questId}`);
+};
+
+export const { useGetQuestsListQuery, useGetQuestByIdQuery } = questsApi;
