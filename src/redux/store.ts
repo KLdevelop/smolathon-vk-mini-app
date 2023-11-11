@@ -4,6 +4,7 @@ import {
   activeQuestReducer,
   attractionModalReducer,
   debugModalReducer,
+  riddlesReducer,
   selectedCityReducer,
 } from './slices';
 import { questsApi } from '@/api';
@@ -16,6 +17,7 @@ const store = configureStore({
     attractionModal: attractionModalReducer,
     activeQuest: activeQuestReducer,
     debugModal: debugModalReducer,
+    riddles: riddlesReducer,
     [questsApi.reducerPath]: questsApi.reducer,
     [settlementsApi.reducerPath]: settlementsApi.reducer,
   },

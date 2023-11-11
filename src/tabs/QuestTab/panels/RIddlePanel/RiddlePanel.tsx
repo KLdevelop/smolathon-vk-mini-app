@@ -7,7 +7,7 @@ export const RiddlePanel = ({ id }: QuestPanelProps) => {
     <Panel nav={id}>
       <PanelHeader>Загадка</PanelHeader>
       <Div>
-        <Card mode="outline">
+        <Card mode="shadow">
           <Div>
             В битвах и сраженьях, кровью веяло, Много солдат отважных уходило. Но один боец остался живой, И его историю
             с QR кодом ты найди. В музее военном, где подвиги хранятся, Солдатская мудрость и тайны раскрываются.

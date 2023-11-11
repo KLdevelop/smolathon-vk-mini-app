@@ -35,6 +35,7 @@
     "@vkontakte/vk-miniapps-deploy": "^0.1.6",
     "@vkontakte/vk-tunnel": "^0.1.4",
     "@vkontakte/vkui": "^5.9.5",
+    "axios": "^1.6.1",
     "eruda": "^3.0.1",
     "eruda-code": "^2.1.0",
     "eruda-dom": "^2.0.0",

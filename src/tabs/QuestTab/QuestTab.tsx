@@ -8,11 +8,18 @@ import { QuestStagePanel } from './panels/QuestStagePanel';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 import { RiddlePanel } from './panels/RIddlePanel';
 import { BossFightPanel } from './panels/BossFightPanel';
+import { useGetQuestByIdQuery, useGetQuestsListQuery } from '@/api';
 
 export const QuestTab = ({ id }: TabProps) => {
   const [activePanel, setActivePanel] = useState<QuestPanelID>(QuestPanelIDs.Quest);
-  const { activeQuest } = useAppSelector((state) => state.activeQuest);
+  // const { activeQuest } = useAppSelector((state) => state.activeQuest);
   const { panel } = useActiveVkuiLocation();
+  const { settlement } = useAppSelector((state) => state.city);
+  const { data: questsResponse } = useGetQuestsListQuery(settlement?.id ?? '');
+  const questsData = questsResponse?.result;
+  const quest = questsData && questsData.find((q) => q.is_active);
+  const { data: questResponse } = useGetQuestByIdQuery(quest?.id ?? '');
+  const activeQuest = questResponse?.result;
 
   useEffect(() => {
     if (!activeQuest) setActivePanel(QuestPanelIDs.Empty);

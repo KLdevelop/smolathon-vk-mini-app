@@ -1,20 +1,26 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { apiUrl } from './apiUrl';
+import { getUserId } from '@/utils';
+import axios from 'axios';
+
+const userId = getUserId();
 
 export const questsApi = createApi({
   reducerPath: 'questsApi',
   baseQuery: fetchBaseQuery({ baseUrl: apiUrl + 'quests' }),
   endpoints: (builder) => ({
     getQuestsList: builder.query<ApiResponse<QuestData[]>, string>({
-      query: (settlement_id) => ({ url: `list?settlement_id=${settlement_id}` }),
+      query: (settlement_id) => ({ url: `list?account_id=${userId}&settlement_id=${settlement_id}` }),
     }),
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
-      query: (id) => ({ url: `/1/${id}` }),
-    }),
-    startQuest: builder.query<void, { userId: string; questId: string }>({
-      query: ({ userId, questId }) => ({ url: `start/${userId}/${questId}` }),
+      query: (id) => ({ url: `/${userId}/${id}` }),
     }),
   }),
 });
 
-export const { useGetQuestsListQuery, useGetQuestByIdQuery, useStartQuestQuery } = questsApi;
+export const startQuest = (questId: string) => {
+  console.log(apiUrl + `quests/start/${userId}/${questId}`);
+  axios.post(apiUrl + `quests/start/${userId}/${questId}`);
+};
+
+export const { useGetQuestsListQuery, useGetQuestByIdQuery } = questsApi;
