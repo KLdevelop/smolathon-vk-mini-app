@@ -10,7 +10,7 @@ export const questsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: apiUrl + 'quests' }),
   endpoints: (builder) => ({
     getQuestsList: builder.query<ApiResponse<QuestData[]>, string>({
-      query: (settlement_id) => ({ url: `list?settlement_id=${settlement_id}` }),
+      query: (settlement_id) => ({ url: `list?account_id=${userId}&settlement_id=${settlement_id}` }),
     }),
     getQuestById: builder.query<ApiResponse<QuestData>, string>({
       query: (id) => ({ url: `/${userId}/${id}` }),
@@ -19,6 +19,7 @@ export const questsApi = createApi({
 });
 
 export const startQuest = (questId: string) => {
+  console.log(apiUrl + `quests/start/${userId}/${questId}`);
   axios.post(apiUrl + `quests/start/${userId}/${questId}`);
 };
 

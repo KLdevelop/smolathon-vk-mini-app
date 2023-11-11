@@ -58,3 +58,12 @@ interface Settlement {
   id: string;
   name: string;
 }
+
+interface Riddle {
+  description: string;
+  id: string;
+  letters: string;
+  name: string;
+  quest_step_id: string;
+  status: string;
+}

@@ -7,7 +7,7 @@ import store from './redux/store';
 import { RouterProvider, createHashRouter } from '@vkontakte/vk-mini-apps-router';
 import { routes } from './navigations';
 
-const router = createHashRouter(routes);
+const router = createHashRouter(routes as never);
 
 bridge.send('VKWebAppInit');
 
