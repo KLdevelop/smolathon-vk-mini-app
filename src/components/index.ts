@@ -20,3 +20,5 @@ export * from './InpGroup/InpGroup';
 export * from './InpGroup/DisabledInput';
 export * from './Card/CardLetter';
 export * from './MySnackbar';
+export * from './Timer';
+export * from './HealthBar';

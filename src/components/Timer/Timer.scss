@@ -1,0 +1,19 @@
+.timer {
+  width: 58px;
+  height: 66px;
+  background-image: url('./TimerClock.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_value {
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #fff;
+  }
+}
