@@ -6,6 +6,7 @@ import { useAppSelector } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { QuestStagePanel } from './panels/QuestStagePanel';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
+import { RiddlePanel } from './panels/RIddlePanel';
 
 export const QuestTab = ({ id }: TabProps) => {
   const [activePanel, setActivePanel] = useState<QuestPanelID>(QuestPanelIDs.Quest);
@@ -21,6 +22,7 @@ export const QuestTab = ({ id }: TabProps) => {
       <EmptyPanel id={QuestPanelIDs.Empty} />
       <QuestPanel id={QuestPanelIDs.Quest} activeQuest={activeQuest!} />
       <QuestStagePanel id={QuestPanelIDs.Stage} />
+      <RiddlePanel id={QuestPanelIDs.Riddle} />
     </View>
   );
 };
