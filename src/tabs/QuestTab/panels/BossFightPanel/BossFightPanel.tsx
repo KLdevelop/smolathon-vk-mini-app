@@ -14,6 +14,7 @@ export const BossFightPanel = ({ id }: QuestPanelProps) => {
   const [currentHp, setCurrentHp] = useState(100);
 
   const nextStep = () => {
+    if (bossHp <= 1) navigator.push('/quest/complete');
     if (currentQuestion < 2) {
       setBossHp(bossHp - 1);
       setSnackbar(<div></div>);

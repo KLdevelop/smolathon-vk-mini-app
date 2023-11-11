@@ -1,8 +1,15 @@
 import { StickyFooter } from '@/components';
 import { Button, Card, Div, Panel, PanelHeader } from '@vkontakte/vkui';
 import { QuestPanelProps } from '../questPanelProps';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 export const RiddlePanel = ({ id }: QuestPanelProps) => {
+  const navigator = useRouteNavigator();
+
+  const onButtonClick = () => {
+    navigator.push('/quest/bossfight');
+  };
+
   return (
     <Panel nav={id}>
       <PanelHeader>Загадка</PanelHeader>
@@ -15,8 +22,8 @@ export const RiddlePanel = ({ id }: QuestPanelProps) => {
         </Card>
       </Div>
       <StickyFooter>
-        <Button stretched size="l">
-          Сканировать QR код
+        <Button stretched size="l" onClick={onButtonClick}>
+          Сканировать QR код и сразиться с боссом
         </Button>
       </StickyFooter>
     </Panel>

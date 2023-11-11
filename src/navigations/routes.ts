@@ -52,6 +52,7 @@ export const routes = [
     view: Tabs.QuestTab,
     panel: QuestPanelIDs.Stage,
   },
+
   {
     path: '/quest/riddle',
     view: Tabs.QuestTab,
@@ -61,6 +62,11 @@ export const routes = [
     path: '/quest/bossfight',
     view: Tabs.QuestTab,
     panel: QuestPanelIDs.BossFight,
+  },
+  {
+    path: '/quest/complete',
+    view: Tabs.QuestTab,
+    panel: QuestPanelIDs.Complete,
   },
   {
     path: '/wiki',

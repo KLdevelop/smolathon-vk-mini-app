@@ -9,6 +9,7 @@ import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 import { RiddlePanel } from './panels/RIddlePanel';
 import { BossFightPanel } from './panels/BossFightPanel';
 import { useGetQuestByIdQuery, useGetQuestsListQuery } from '@/api';
+import { CompletePanel } from './panels/CompletePanel';
 
 export const QuestTab = ({ id }: TabProps) => {
   const [activePanel, setActivePanel] = useState<QuestPanelID>(QuestPanelIDs.Quest);
@@ -32,6 +33,7 @@ export const QuestTab = ({ id }: TabProps) => {
       <QuestStagePanel id={QuestPanelIDs.Stage} />
       <RiddlePanel id={QuestPanelIDs.Riddle} />
       <BossFightPanel id={QuestPanelIDs.BossFight} />
+      <CompletePanel id={QuestPanelIDs.Complete} />
     </View>
   );
 };
