@@ -6,6 +6,7 @@ interface Props {
   num:number
 }
 export const Question = ({ num,question, children }: Props) => {
+ 
   return (
     <Card mode="outline">
       <Div>

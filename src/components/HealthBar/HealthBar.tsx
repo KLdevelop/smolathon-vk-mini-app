@@ -30,7 +30,7 @@ export const HealthBar = ({ type, u_name, hp,currentHp }: Props) => {
       <div className="healthBar_hp">
         <Icon24Like className="healthBar_hp_like" />
         <span className="healthBar_hp_val">
-          {hp}/{type == 'user' ? 3 : 7}
+          {hp}/{type == 'user' ? 3 : 3}
         </span>
       </div>
     </div>
