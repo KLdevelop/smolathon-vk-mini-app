@@ -23,6 +23,7 @@ export const InfoContent = ({ steps }: InfoContentProps) => {
             title={step.name}
             type={step.place_type}
             address={step.address}
+            img={step.images[0] && step.images[0].sizes.m.url}
             status={step.status}
             onClick={onCardClick}
           />
