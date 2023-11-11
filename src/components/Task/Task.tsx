@@ -6,10 +6,12 @@ import './Task.scss';
 interface Props {
   num: number;
   status: boolean;
+  description: string;
+
   onClick?: () => void;
 }
 
-export const Task = ({ num, status, onClick }: Props) => {
+export const Task = ({ num, status, onClick, description }: Props) => {
   return (
     <div className="task">
       {status ? (
@@ -19,9 +21,7 @@ export const Task = ({ num, status, onClick }: Props) => {
           <Icon28CheckCircleFill />
         </Cell>
       )}
-      <div className="task_title">
-        В битвах и сраженьях кровью веяло, Много солдат отважных уходило. Но один боец остался живой, И его историю с QR
-      </div>
+      <div className="task_title">{description}</div>
       <Cell className="task_ico" onClick={onClick}>
         <Icon24ChevronRightSmallOutline />
       </Cell>

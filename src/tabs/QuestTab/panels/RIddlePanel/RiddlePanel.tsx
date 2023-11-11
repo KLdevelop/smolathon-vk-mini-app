@@ -2,9 +2,16 @@ import { StickyFooter } from '@/components';
 import { Button, Card, Div, Panel, PanelHeader } from '@vkontakte/vkui';
 import { QuestPanelProps } from '../questPanelProps';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useGetRiddlesListQuery } from '@/api/riddlesApi';
+import { useAppSelector } from '@/hooks';
 
 export const RiddlePanel = ({ id }: QuestPanelProps) => {
+  const { description } = useAppSelector((state) => state.riddle);
   const navigator = useRouteNavigator();
+  const stepId = '51219208-8c66-4320-ac02-d37f7998ef63';
+  const { data: riddlesResponse } = useGetRiddlesListQuery(stepId);
+
+  console.log(riddlesResponse);
 
   const onButtonClick = () => {
     navigator.push('/quest/bossfight');
@@ -15,10 +22,7 @@ export const RiddlePanel = ({ id }: QuestPanelProps) => {
       <PanelHeader>Загадка</PanelHeader>
       <Div>
         <Card mode="shadow">
-          <Div>
-            В битвах и сраженьях, кровью веяло, Много солдат отважных уходило. Но один боец остался живой, И его историю
-            с QR кодом ты найди. В музее военном, где подвиги хранятся, Солдатская мудрость и тайны раскрываются.
-          </Div>
+          <Div>{description}</Div>
         </Card>
       </Div>
       <StickyFooter>

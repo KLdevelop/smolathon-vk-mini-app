@@ -25,10 +25,12 @@ export const BossFightPanel = ({ id }: QuestPanelProps) => {
 
   return (
     <Panel nav={id}>
-      <PanelHeader before={<PanelHeaderBack onClick={() => navigator.back()} />}>Битва с боссом</PanelHeader>
+      <PanelHeader before={<PanelHeaderBack onClick={() => navigator.back()} />} separator={false}>
+        Битва с боссом
+      </PanelHeader>
       <Div>
-        <Card mode="outline" style={{ display: 'flex', alignContent: 'center' }}>
-          <Div style={{ display: 'flex' }}>
+        <Card mode="shadow" style={{ display: 'flex', alignContent: 'center' }}>
+          <Div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
             <HealthBar type="user" u_name="Никита" hp={3} currentHp={100} />
             <Timer />
             <HealthBar type="boss" u_name="Босс" hp={bossHp} currentHp={currentHp} />

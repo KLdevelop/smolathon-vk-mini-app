@@ -4,11 +4,13 @@ import {
   activeQuestReducer,
   attractionModalReducer,
   debugModalReducer,
+  riddleReducer,
   riddlesReducer,
   selectedCityReducer,
 } from './slices';
 import { questsApi } from '@/api';
 import { settlementsApi } from '@/api/settlementsApi';
+import { riddlesApi } from '@/api/riddlesApi';
 
 const store = configureStore({
   reducer: {
@@ -18,11 +20,13 @@ const store = configureStore({
     activeQuest: activeQuestReducer,
     debugModal: debugModalReducer,
     riddles: riddlesReducer,
+    riddle: riddleReducer,
     [questsApi.reducerPath]: questsApi.reducer,
     [settlementsApi.reducerPath]: settlementsApi.reducer,
+    [riddlesApi.reducerPath]: riddlesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(questsApi.middleware).concat(settlementsApi.middleware),
+    getDefaultMiddleware().concat(questsApi.middleware).concat(settlementsApi.middleware).concat(riddlesApi.middleware),
 });
 
 export default store;

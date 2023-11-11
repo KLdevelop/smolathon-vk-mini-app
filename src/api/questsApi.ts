@@ -19,7 +19,6 @@ export const questsApi = createApi({
 });
 
 export const startQuest = (questId: string) => {
-  console.log(apiUrl + `quests/start/${userId}/${questId}`);
   axios.post(apiUrl + `quests/start/${userId}/${questId}`);
 };
 

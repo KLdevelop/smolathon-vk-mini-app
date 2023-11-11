@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { apiUrl } from './apiUrl';
 import { getUserId } from '@/utils';
 
@@ -13,3 +13,5 @@ export const riddlesApi = createApi({
     }),
   }),
 });
+
+export const { useGetRiddlesListQuery } = riddlesApi;

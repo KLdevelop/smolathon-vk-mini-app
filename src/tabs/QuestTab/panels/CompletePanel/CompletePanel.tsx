@@ -9,7 +9,7 @@ export const CompletePanel = ({ id }: QuestPanelProps) => {
 
   return (
     <Panel nav={id} centered>
-      <PanelHeader>Завершение</PanelHeader>
+      <PanelHeader separator={false}>Завершение</PanelHeader>
       <Icon28CupOutline width={56} height={56} />
       <Title>Вы завершили квест</Title>
       <Text style={{ marginTop: '5px', marginBottom: '7px', textAlign: 'center', padding: '5px' }}>
