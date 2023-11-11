@@ -1,0 +1,11 @@
+.StartGameBanner {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 10px;
+
+  &__navigate {
+    padding: 0;
+    width: fit-content;
+  }
+}
