@@ -53,6 +53,11 @@ export const routes = [
     panel: QuestPanelIDs.Stage,
   },
   {
+    path: '/quest/riddle',
+    view: Tabs.QuestTab,
+    panel: QuestPanelIDs.Riddle,
+  },
+  {
     path: '/wiki',
     view: Tabs.WikiTab,
     panel: 'main',
