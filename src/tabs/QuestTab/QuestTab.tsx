@@ -22,12 +22,12 @@ export const QuestTab = ({ id }: TabProps) => {
   const questsData = questsResponse?.result;
   const quest = questsData && questsData.find((q) => q.is_active);
   const { data: questResponse } = useGetQuestByIdQuery(quest?.id ?? '');
-  const activeQuest = questResponse?.result;
+  const activeQuest = questResponse?.result || activeQuestState;
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!activeQuestState && activeQuest) dispatch(setActiveQuest(activeQuest));
-  });
+  }, [activeQuestState, activeQuest, dispatch]);
 
   useEffect(() => {
     if (!activeQuest) setActivePanel(QuestPanelIDs.Empty);
