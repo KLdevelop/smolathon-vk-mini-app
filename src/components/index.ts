@@ -1,7 +1,6 @@
 export * from './AppFooter';
 export * from './TabHeader';
 export * from './Card/CardAddress';
-export * from './Card/CardTask';
 export * from './Card/CardAttraction';
 export * from './Card/CardContent';
 export * from './Card/CardTitle';
