@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { QuestStagePanel } from './panels/QuestStagePanel';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 import { RiddlePanel } from './panels/RIddlePanel';
+import { BossFightPanel } from './panels/BossFightPanel';
 
 export const QuestTab = ({ id }: TabProps) => {
   const [activePanel, setActivePanel] = useState<QuestPanelID>(QuestPanelIDs.Quest);
@@ -23,6 +24,7 @@ export const QuestTab = ({ id }: TabProps) => {
       <QuestPanel id={QuestPanelIDs.Quest} activeQuest={activeQuest!} />
       <QuestStagePanel id={QuestPanelIDs.Stage} />
       <RiddlePanel id={QuestPanelIDs.Riddle} />
+      <BossFightPanel id={QuestPanelIDs.BossFight} />
     </View>
   );
 };
