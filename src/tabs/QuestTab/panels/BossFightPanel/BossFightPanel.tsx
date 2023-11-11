@@ -1,4 +1,4 @@
-import { Button, Card, Div, FixedLayout, Panel, PanelHeader, PanelHeaderBack, Spacing } from '@vkontakte/vkui';
+import { Button, Card, Div, Panel, PanelHeader, PanelHeaderBack, Spacing } from '@vkontakte/vkui';
 import { QuestPanelProps } from '../questPanelProps';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { HealthBar, Question, StickyFooter, Timer } from '@/components';
