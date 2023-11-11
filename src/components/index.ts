@@ -23,3 +23,4 @@ export * from './MySnackbar';
 export * from './Timer';
 export * from './HealthBar';
 export * from './Question';
+export * from './StartGameBanner';

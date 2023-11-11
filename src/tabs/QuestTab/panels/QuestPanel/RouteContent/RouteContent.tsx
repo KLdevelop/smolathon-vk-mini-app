@@ -1,5 +1,5 @@
-import { Group } from '@vkontakte/vkui';
-import { YanMap } from '@/components';
+import { Div, Group } from '@vkontakte/vkui';
+import { StartGameBanner, YanMap } from '@/components';
 
 interface RouteContentProps {
   steps: Step[];
@@ -11,6 +11,9 @@ export const RouteContent = ({ steps }: RouteContentProps) => {
       <div style={{ height: '100%', padding: 0 }}>
         <YanMap steps={steps} />
       </div>
+      <Div>
+        <StartGameBanner />
+      </Div>
     </Group>
   );
 };
