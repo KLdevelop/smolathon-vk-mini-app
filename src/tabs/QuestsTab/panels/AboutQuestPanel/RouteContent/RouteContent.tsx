@@ -19,7 +19,9 @@ export const RouteContent = ({ questData }: RouteContentProps) => {
 
   return (
     <Group className="routeContent">
-      <YanMap steps={steps} />
+      <div style={{ height: '300px', padding: 0 }}>
+        <YanMap steps={steps} />
+      </div>
       <CardGrid size="l" className="routeContent__attractions">
         {steps.map((step) => (
           <CardAttraction

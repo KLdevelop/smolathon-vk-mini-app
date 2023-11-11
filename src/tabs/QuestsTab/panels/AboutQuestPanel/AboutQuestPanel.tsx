@@ -4,7 +4,11 @@ import { StickyFooter, TabHeader } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import { AboutContent, RouteContent } from '..';
 import { useActiveVkuiLocation, useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import { useGetQuestByIdQuery } from '@/api';
+import { useGetQuestByIdQuery, useStartQuestQuery } from '@/api';
+import { useAppDispatch } from '@/hooks';
+import { setActiveQuest, setMarkers } from '@/redux/slices';
+import { useEffect, useState } from 'react';
+import { getAllCoordinatesFromSteps } from '@/utils';
 
 // const contentStyles = {
 //   paddingTop: 110,
@@ -28,7 +32,26 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
     },
   ];
   const { data: questDataResponse } = useGetQuestByIdQuery(questId ?? '');
-  const questData = questDataResponse?.result;
+  const questData = questDataResponse?.result || null;
+  const dispatch = useAppDispatch();
+  const [skipStarting, setSkipStarting] = useState<boolean>(true);
+
+  useStartQuestQuery(
+    { userId: '1', questId: questData?.id ?? '' },
+    {
+      skip: skipStarting,
+    },
+  );
+
+  useEffect(() => {
+    if (questData) dispatch(setMarkers(getAllCoordinatesFromSteps(questData.steps)));
+  }, [questData]);
+
+  const onStartQuestClick = () => {
+    setSkipStarting(false);
+    dispatch(setActiveQuest(questData));
+    navigator.push('/quest');
+  };
 
   return (
     <Panel nav={id}>
@@ -39,7 +62,7 @@ export const AboutQuestPanel = ({ id }: QuestsPanelProps) => {
       {questData &&
         (activeTabId === 'about' ? <AboutContent questData={questData} /> : <RouteContent questData={questData} />)}
       <StickyFooter>
-        <Button stretched size="l" onClick={() => navigator.push('/quest')}>
+        <Button stretched size="l" onClick={onStartQuestClick}>
           Начать квест
         </Button>
       </StickyFooter>

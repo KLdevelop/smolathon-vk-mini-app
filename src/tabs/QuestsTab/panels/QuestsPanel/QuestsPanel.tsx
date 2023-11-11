@@ -1,27 +1,14 @@
 import { Button, Group, CardGrid, Panel, PanelHeader, Title } from '@vkontakte/vkui';
 import { Icon16DropdownOutline } from '@vkontakte/icons';
-import { TabHeader, CardContent, ModalIDs } from '@/components';
+import { CardContent, ModalIDs } from '@/components';
 import { QuestsPanelProps } from '../questsPanelProps';
 import './QuestsPanel.scss';
 import { useAppSelector, useOpenModal } from '@/hooks';
-import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useGetQuestsListQuery } from '@/api/questsApi';
 import { routeTypeToString } from '@/utils';
 
 export const QuestsPanel = ({ id }: QuestsPanelProps) => {
-  const { tab: activeTabId } = useActiveVkuiLocation();
-  const tabs = [
-    {
-      tabId: 'new',
-      title: 'Новые',
-      route: '/',
-    },
-    {
-      tabId: 'active',
-      title: 'Активные',
-      route: '/active_quests',
-    },
-  ];
   const { settlement } = useAppSelector((state) => state.city);
   const openCityModal = useOpenModal(ModalIDs.CityModal);
   const navigator = useRouteNavigator();
@@ -33,7 +20,7 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   };
 
   return (
-    <Panel nav={id}>
+    <Panel nav={id} style={{ marginTop: '15px' }}>
       <PanelHeader separator={false}>
         <Button
           appearance="neutral"
@@ -48,7 +35,6 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
           </Title>
         </Button>
       </PanelHeader>
-      <TabHeader activeTabId={activeTabId ?? 'new'} tabs={tabs} />
       <Group>
         <CardGrid size="l" className="questsPanelCardGrid">
           {quests.map((quest) => (

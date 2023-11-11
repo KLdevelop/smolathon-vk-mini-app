@@ -1,5 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { activeModalReducer, attractionModalReducer, selectedCityReducer } from './slices';
+import {
+  activeModalReducer,
+  activeQuestReducer,
+  attractionModalReducer,
+  debugModalReducer,
+  selectedCityReducer,
+} from './slices';
 import { questsApi } from '@/api';
 import { settlementsApi } from '@/api/settlementsApi';
 
@@ -8,6 +14,8 @@ const store = configureStore({
     modal: activeModalReducer,
     city: selectedCityReducer,
     attractionModal: attractionModalReducer,
+    activeQuest: activeQuestReducer,
+    debugModal: debugModalReducer,
     [questsApi.reducerPath]: questsApi.reducer,
     [settlementsApi.reducerPath]: settlementsApi.reducer,
   },
