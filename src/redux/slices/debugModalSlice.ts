@@ -6,10 +6,12 @@ interface DebugData {
 
 interface InitialState {
   debugData: DebugData | null;
+  markers: number[][];
 }
 
 const initialState: InitialState = {
   debugData: null,
+  markers: [],
 };
 
 const debugModalSlice = createSlice({
@@ -20,8 +22,12 @@ const debugModalSlice = createSlice({
       ...state,
       debugData,
     }),
+    setMarkers: (state, { payload: markers }: PayloadAction<number[][]>) => ({
+      ...state,
+      markers,
+    }),
   },
 });
 
-export const { setDebugData } = debugModalSlice.actions;
+export const { setDebugData, setMarkers } = debugModalSlice.actions;
 export const debugModalReducer = debugModalSlice.reducer;
