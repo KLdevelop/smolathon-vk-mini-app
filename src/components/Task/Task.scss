@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  &_cell > * {
+    padding: 0;
+  }
   &_title {
     display: -webkit-box;
     -webkit-line-clamp: 1;
