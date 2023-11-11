@@ -1,5 +1,6 @@
 import { Tabs } from './tabs';
 import { QuestsPanelIDs } from './questsPanelIDs';
+import { QuestPanelIDs } from './questPanelIDs';
 
 export const root = 'app-root';
 
@@ -45,6 +46,11 @@ export const routes = [
     path: '/quest/info',
     view: Tabs.QuestTab,
     tab: 'info',
+  },
+  {
+    path: '/quest/stage',
+    view: Tabs.QuestTab,
+    panel: QuestPanelIDs.Stage,
   },
   {
     path: '/wiki',

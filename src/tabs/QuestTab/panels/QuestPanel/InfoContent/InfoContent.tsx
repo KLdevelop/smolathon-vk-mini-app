@@ -1,4 +1,5 @@
 import { CardAttraction } from '@/components';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { CardGrid, Group } from '@vkontakte/vkui';
 
 interface InfoContentProps {
@@ -6,6 +7,12 @@ interface InfoContentProps {
 }
 
 export const InfoContent = ({ steps }: InfoContentProps) => {
+  const navigator = useRouteNavigator();
+
+  const onCardClick = () => {
+    navigator.push('/quest/stage');
+  };
+
   return (
     <Group>
       <CardGrid size="l">
@@ -17,6 +24,7 @@ export const InfoContent = ({ steps }: InfoContentProps) => {
             type={step.place_type}
             address={step.address}
             status={step.status}
+            onClick={onCardClick}
           />
         ))}
       </CardGrid>
