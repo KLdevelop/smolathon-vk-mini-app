@@ -22,3 +22,4 @@ export * from './Card/CardLetter';
 export * from './MySnackbar';
 export * from './Timer';
 export * from './HealthBar';
+export * from './Question';
