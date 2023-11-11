@@ -11,7 +11,7 @@ export const CompletePanel = ({ id }: QuestPanelProps) => {
     <Panel nav={id} centered>
       <PanelHeader separator={false}>Завершение</PanelHeader>
       <Icon28CupOutline width={56} height={56} />
-      <Title>Вы завершили квест</Title>
+      <Title>Вы завершили этап</Title>
       <Text style={{ marginTop: '5px', marginBottom: '7px', textAlign: 'center', padding: '5px' }}>
         Вы успешно прошли битву с боссом и заработали 60 смолкоинов
       </Text>
