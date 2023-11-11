@@ -2,10 +2,22 @@ import { Icon28CheckCircleFill } from '@vkontakte/icons';
 import { Icon24ChevronRightSmallOutline } from '@vkontakte/icons';
 import { Cell, Counter } from '@vkontakte/vkui';
 import './Task.scss';
-export const Task = () => {
+
+interface Props {
+  num: number;
+  status: boolean;
+}
+
+export const Task = ({ num, status }: Props) => {
   return (
     <div className="task">
-      {true ? <Counter mode="primary">1</Counter> : <Icon28CheckCircleFill />}
+      {status ? (
+        <Counter mode="primary">{num}</Counter>
+      ) : (
+        <Cell className="task_cell">
+          <Icon28CheckCircleFill />
+        </Cell>
+      )}
       <div className="task_title">
         В битвах и сраженьях кровью веяло, Много солдат отважных уходило. Но один боец остался живой, И его историю с QR
       </div>
