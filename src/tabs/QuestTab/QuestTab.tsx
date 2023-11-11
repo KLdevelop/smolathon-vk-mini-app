@@ -9,10 +9,13 @@ import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 import { RiddlePanel } from './panels/RIddlePanel';
 import { BossFightPanel } from './panels/BossFightPanel';
 import { useGetQuestByIdQuery, useGetQuestsListQuery } from '@/api';
+import { CompletePanel } from './panels/CompletePanel';
+import { useDispatch } from 'react-redux';
+import { setActiveQuest } from '@/redux/slices';
 
 export const QuestTab = ({ id }: TabProps) => {
   const [activePanel, setActivePanel] = useState<QuestPanelID>(QuestPanelIDs.Quest);
-  // const { activeQuest } = useAppSelector((state) => state.activeQuest);
+  const { activeQuest: activeQuestState } = useAppSelector((state) => state.activeQuest);
   const { panel } = useActiveVkuiLocation();
   const { settlement } = useAppSelector((state) => state.city);
   const { data: questsResponse } = useGetQuestsListQuery(settlement?.id ?? '');
@@ -20,9 +23,15 @@ export const QuestTab = ({ id }: TabProps) => {
   const quest = questsData && questsData.find((q) => q.is_active);
   const { data: questResponse } = useGetQuestByIdQuery(quest?.id ?? '');
   const activeQuest = questResponse?.result;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!activeQuestState && activeQuest) dispatch(setActiveQuest(activeQuest));
+  });
 
   useEffect(() => {
     if (!activeQuest) setActivePanel(QuestPanelIDs.Empty);
+    else setActivePanel(QuestPanelIDs.Quest);
   }, [activeQuest]);
 
   return (
@@ -32,6 +41,7 @@ export const QuestTab = ({ id }: TabProps) => {
       <QuestStagePanel id={QuestPanelIDs.Stage} />
       <RiddlePanel id={QuestPanelIDs.Riddle} />
       <BossFightPanel id={QuestPanelIDs.BossFight} />
+      <CompletePanel id={QuestPanelIDs.Complete} />
     </View>
   );
 };

@@ -20,7 +20,7 @@ export const QuestsPanel = ({ id }: QuestsPanelProps) => {
   };
 
   return (
-    <Panel nav={id} style={{ marginTop: '15px' }}>
+    <Panel nav={id}>
       <PanelHeader separator={false}>
         <Button
           appearance="neutral"

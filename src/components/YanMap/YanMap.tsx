@@ -29,7 +29,6 @@ export const YanMap = ({ steps, onMarkerClick }: MapProps) => {
   const openDebugModal = useOpenModal(ModalIDs.DebugModal);
   const { debugData } = useAppSelector((state) => state.debugModal);
   const userCoordinates = debugData ? debugData.coordinates : mapData.center;
-  console.log(userCoordinates);
 
   return (
     <MapContainer>
