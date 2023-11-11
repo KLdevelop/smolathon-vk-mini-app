@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &_cell > * {
+    padding: 0;
+  }
+
   &_title {
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -17,6 +21,7 @@
     color: var(--vkui--color_text_primary);
     margin-left: 10px;
   }
+
   &_icon > * {
     padding: 0;
   }
