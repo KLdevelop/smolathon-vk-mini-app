@@ -3,8 +3,9 @@ import { ReactNode } from 'react';
 interface Props {
   question: string;
   children: ReactNode;
+  num:number
 }
-export const Question = ({ question, children }: Props) => {
+export const Question = ({ num,question, children }: Props) => {
   return (
     <Card mode="outline">
       <Div>
@@ -18,7 +19,7 @@ export const Question = ({ question, children }: Props) => {
             textTransform: 'uppercase',
           }}
         >
-          Вопрос 1
+          Вопрос {num}
         </p>
       </Div>
       <Separator />
