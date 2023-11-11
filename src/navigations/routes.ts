@@ -58,6 +58,11 @@ export const routes = [
     panel: QuestPanelIDs.Riddle,
   },
   {
+    path: '/quest/bossfight',
+    view: Tabs.QuestTab,
+    panel: QuestPanelIDs.BossFight,
+  },
+  {
     path: '/wiki',
     view: Tabs.WikiTab,
     panel: 'main',
